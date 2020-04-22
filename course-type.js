@@ -2,15 +2,17 @@
   *     @author Victor Chimenti, MSCS 2020
   *     @file course-type.js
   *
-  *     This new content type is being adapted from the education abroad program type
-  *     and is intended to provide a searchable, sortable group of courses for the university core courses.
+  *     This new content type is being adapted from the university core
+  *     categorized courses content type and is intended to provide a
+  *     searchable, sortable group of courses that can be exported to and used
+  *     by any department.
   *
   *     This content type will work in conjunction with the Organizer and each item
   *     will contain one searchable, categorizable course.
   *
   *     Document will write once when the page loads
   *
-  *     @version 5.3
+  *     @version 1.0
   */
 
 
