@@ -1,0 +1,570 @@
+/**  md to large default selectors  **/
+
+span {
+    color: black;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+p {
+    color: black;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+li {
+    color: black;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+span.courseType {
+    font-size: 1.7rem;
+    font-weight: 550;
+}
+
+.standardContent h5 {
+    font-family: sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.standardContent h4 {
+    font-family: sans-serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+#zoneA.col-md-9 .standardContent .btn {
+    color: #aa0000;
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 20px;
+    min-height: 60px;
+    padding: 20px 20px 0 10px;
+    text-align: left;
+    text-decoration: none;
+}
+
+#zoneA.col-md-9 .standardContent .btn span.courseTitleWrapper {
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding-bottom: 5px;
+}
+
+#zoneA.col-md-9 .standardContent .btn .fas {
+    background-color: inherit;
+    color: #aa0000;
+    display: inline-block;
+    padding-right: 5px;
+}
+
+#zoneA.col-md-9 .standardContent .btn span.courseTitleWrapper span.courseTitle {
+    color: #aa0000;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+#zoneA.col-md-9 .standardContent .btn .fa-plus {
+    display: none;
+}
+
+#zoneA.col-md-9 .standardContent .btn[aria-expanded="false"] .fa-plus {
+    display: initial;
+}
+
+#zoneA.col-md-9 .standardContent .btn[aria-expanded="false"] .fa-minus {
+    display: none;
+}
+
+#zoneA.col-md-9 .standardContent .btn:hover .fas {
+    text-decoration: none;
+}
+
+#zoneA.col-md-9 .standardContent .btn:active .fas {
+    text-decoration: none;
+}
+
+#zoneA.col-md-9 .standardContent .btn:visited .fas {
+    text-decoration: none;
+}
+
+#zoneA.col-md-9 .standardContent .btn:default .fas {
+    text-decoration: none;
+}
+
+#zoneA.col-md-9 .standardContent .btn:hover span.courseTitle {
+    text-decoration: underline;
+}
+
+#zoneA.col-md-9 .standardContent div.courseSummaryHeader {
+    padding-bottom: 0.5rem;
+    padding-left: 1.5rem;
+}
+
+#zoneA.col-md-9 .standardContent div.card div.card-body {
+    padding-left: 1.5rem;
+}
+
+
+
+
+
+
+/**  md to large targeted selectors  **/
+
+#zoneA.col-md-9 div.organizerWrapper div.organizer.standardContent h2.organizerTitle {
+    font-family: sans-serif;
+    font-weight: 600;
+}
+
+#zoneA.col-md-9 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent div.card {
+    height: auto;
+    padding: 0 20px 30px 10px;
+}
+
+#zoneA.col-md-9 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent div.card div.card-header {
+    font-family: sans-serif;
+    font-weight: 600;
+    margin-bottom: 5px;
+    padding: 5px 20px 0 15px;
+}
+
+#zoneA.col-md-9 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent div.card div.card-header button.btn:hover span.courseTitle {
+    text-decoration: underline;
+}
+
+#zoneA.col-md-9 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent div.card div.courseSummaryWrapper {
+    color: black;
+    display: block;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 20px;
+    min-height: 60px;
+    padding: 0 20px 20px 15px;
+    text-align: left;
+    text-decoration: none;
+}
+
+#zoneA.col-md-9 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent div.card div.card-header div.courseSummaryWrapper div.row.col-xs-12.courseDetails span.courseType {
+    font-size: 1.75rem;
+    font-weight: 550;
+}
+
+#zoneA.col-md-9 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent div.courseSummaryWrapper p.courseSummary {
+    min-height: 230px;
+}
+
+#zoneA.col-md-9 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent div.card div.card-body div.courseDetails {
+    color: black;
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 20px;
+    min-height: 60px;
+    padding: 0 20px 20px 20px;
+    text-align: left;
+    text-decoration: none;
+}
+
+#zoneA.col-md-9 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper.accordion div.courseItem.standardContent .card {
+    height: auto;
+}
+
+#zoneA.col-md-9 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent .card-body .courseDetails {
+    padding: 20px;
+}
+
+#zoneA.col-md-9 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent .card-body .courseDetails p {
+    float: left;
+    margin: 0 10px 10px 0;
+    padding: 5px;
+}
+
+#zoneA.col-md-9 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent .card-body .courseDetails .standardContent h5 {
+    font-family: sans-serif;
+}
+
+#zoneA.col-md-9 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent div.card-body div.courseDetails div.courseInfo p {
+    display: block;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+#zoneA.col-md-9 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent div.card-body div.courseDetails div.courseInfo span {
+    display: block;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+
+
+/**  xs default and targeted selectors  **/
+
+#zoneA.col-xs-12 .standardContent .btn {
+    color: #aa0000;
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 20px;
+    min-height: 60px;
+    padding: 20px 20px 0 10px;
+    text-align: left;
+    text-decoration: none;
+    margin-bottom: 0;
+}
+
+#zoneA.col-xs-12 .standardContent .btn span.courseTitleWrapper {
+    padding-bottom: 5px;
+}
+
+#zoneA.col-xs-12 .standardContent .btn .fas {
+    padding-right: 5px;
+}
+
+#zoneA.col-xs-12 .standardContent .btn .fa-plus {
+    display: none;
+}
+
+#zoneA.col-xs-12 .standardContent .btn[aria-expanded="false"] .fa-plus {
+    display: initial;
+}
+
+#zoneA.col-xs-12 .standardContent .btn[aria-expanded="false"] .fa-minus {
+    display: none;
+}
+
+#zoneA.col-xs-12 .standardContent .btn:hover .fas {
+    text-decoration: none;
+}
+
+#zoneA.col-xs-12 .standardContent .btn:active .fas {
+    text-decoration: none;
+}
+
+#zoneA.col-xs-12 .standardContent .btn:visited .fas {
+    text-decoration: none;
+}
+
+#zoneA.col-xs-12 .standardContent .btn:default .fas {
+    text-decoration: none;
+}
+
+#zoneA.col-xs-12 .standardContent .btn:hover span.courseTitle {
+    text-decoration: underline;
+}
+
+#zoneA.col-xs-12 .standardContent div.courseInfo p {
+    display: block;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+#zoneA.col-xs-12 .standardContent div.courseInfo span {
+    display: block;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+#zoneA.col-xs-12 .standardContent div.courseSummaryHeader {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+#zoneA.col-xs-12 .standardContent div.card div.card-body {
+    padding-left: 1.5rem;
+}
+
+#zoneA.col-xs-12 div.levelFive {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+
+
+
+
+/**  sm default and targeted selectors  **/
+
+#zoneA.col-sm-8 .standardContent .btn {
+    color: #aa0000;
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 20px;
+    min-height: 60px;
+    padding: 20px 20px 0 10px;
+    text-align: left;
+    text-decoration: none;
+}
+
+#zoneA.col-sm-8 .standardContent .btn span.courseTitleWrapper {
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding-bottom: 5px;
+}
+
+#zoneA.col-sm-8 .standardContent .btn .fas {
+    background-color: inherit;
+    color: #aa0000;
+    display: inline-block;
+    padding-right: 5px;
+}
+
+#zoneA.col-sm-8 .standardContent .btn span {
+    color: #aa0000;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+#zoneA.col-sm-8 .standardContent .btn span.courseTitleWrapper span.courseTitle {
+    color: #aa0000;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+#zoneA.col-sm-8 .standardContent .btn:hover span.courseTitle {
+    text-decoration: underline;
+}
+
+#zoneA.col-sm-8 .standardContent .btn .fa-plus {
+    display: none;
+}
+
+#zoneA.col-sm-8 .standardContent .btn[aria-expanded="false"] .fa-plus {
+    display: initial;
+}
+
+#zoneA.col-sm-8 .standardContent .btn[aria-expanded="false"] .fa-minus {
+    display: none;
+}
+
+#zoneA.col-sm-8 .standardContent .btn:hover .fas {
+    text-decoration: none;
+}
+
+#zoneA.col-sm-8 .standardContent .btn:active .fas {
+    text-decoration: none;
+}
+
+#zoneA.col-sm-8 .standardContent .btn:visited .fas {
+    text-decoration: none;
+}
+
+#zoneA.col-sm-8 .standardContent .btn:default .fas {
+    text-decoration: none;
+}
+
+#zoneA.col-sm-8 .standardContent div.courseSummaryHeader {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+#zoneA.col-sm-8 .standardContent div.card div.card-body {
+    padding-left: 1.5rem;
+}
+
+
+
+
+/**  media queries  **/
+
+@media (max-width:767.999px) {
+
+    #zoneA.col-xs-12 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent button.btn span.courseTitleWrapper {
+        background-color: inherit;
+        color: #aa0000;
+        display: inline-block;
+        font-family: sans-serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        line-height: 20px;
+        min-height: 60px;
+        padding-right: 20px;
+        padding-top: 20px;
+        text-align: left;
+        text-decoration: none;
+    }
+
+    #zoneA.col-xs-12 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent button.btn span.courseTitleWrapper span.courseTitle {
+        color: #aa0000;
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+
+    #zoneA.col-xs-12 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent div.card div.courseSummaryWrapper {
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+        padding-left: 30px;
+    }
+
+    #zoneA.col-xs-12 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent div.card div.card-header div.courseSummaryWrapper div.row.col-xs-12.courseDetails span.courseType {
+        font-size: 1.75rem;
+        font-weight: 550;
+    }
+
+    #zoneA.col-xs-12 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent div.card-body div.courseDetails div.courseInfo p {
+        display: block;
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+    #zoneA.col-xs-12 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent div.card-body div.courseDetails div.courseInfo span {
+        display: block;
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+    #zoneA.col-xs-12 .standardContent div.courseSummaryHeader {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 1.5rem;
+    }
+
+    #zoneA.col-xs-12 .standardContent div.card div.card-body {
+        padding-left: 1.5rem;
+    }
+
+    #zoneA.col-xs-12 div.levelFive {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+    }
+}
+
+
+@media (orientation:landscape) {
+
+    #zoneA.col-xs-12 .standardContent .btn {
+        color: #aa0000;
+        display: inline-block;
+        font-size: 1.8rem;
+        font-weight: 700;
+        line-height: 20px;
+        min-height: 60px;
+        padding: 20px 20px 0 10px;
+        text-align: left;
+        text-decoration: none;
+        margin-bottom: 0;
+    }
+
+    #zoneA.col-xs-12 .standardContent .btn span.courseTitleWrapper {
+        padding-bottom: 5px;
+    }
+   
+    #zoneA.col-xs-12 .standardContent .btn:hover span.courseTitle {
+        text-decoration: underline;
+    }
+
+    #zoneA.col-xs-12 .standardContent .btn .fas {
+        padding-right: 5px;
+    }
+
+    #zoneA.col-xs-12 .standardContent .btn .fa-plus {
+        display: none;
+    }
+
+    #zoneA.col-xs-12 .standardContent .btn[aria-expanded="false"] .fa-plus {
+        display: initial;
+    }
+
+    #zoneA.col-xs-12 .standardContent .btn[aria-expanded="false"] .fa-minus {
+        display: none;
+    }
+
+    #zoneA.col-xs-12 .standardContent .btn:hover .fas {
+        text-decoration: none;
+    }
+
+    #zoneA.col-xs-12 .standardContent .btn:active .fas {
+        text-decoration: none;
+    }
+
+    #zoneA.col-xs-12 .standardContent .btn:visited .fas {
+        text-decoration: none;
+    }
+
+    #zoneA.col-xs-12 .standardContent .btn:default .fas {
+        text-decoration: none;
+    }
+
+    #zoneA.col-xs-12 .standardContent div.card div.card-body {
+        padding-left: 1.5rem;
+    }
+}
+
+
+
+@media (orientation:portrait) {
+
+    #zoneA.col-xs-12 .standardContent .btn {
+        color: #aa0000;
+        display: inline-block;
+        font-size: 1.8rem;
+        font-weight: 700;
+        line-height: 20px;
+        min-height: 60px;
+        padding: 20px 20px 0 10px;
+        text-align: left;
+        text-decoration: none;
+        margin-bottom: 0;
+    }
+
+    #zoneA.col-xs-12 .standardContent .btn span.courseTitleWrapper {
+        padding-bottom: 5px;
+    }
+
+    #zoneA.col-xs-12 .standardContent .btn .fas {
+        padding-right: 5px;
+    }
+
+    #zoneA.col-xs-12 .standardContent .btn .fa-plus {
+        display: none;
+    }
+
+    #zoneA.col-xs-12 .standardContent .btn[aria-expanded="false"] .fa-plus {
+        display: initial;
+    }
+
+    #zoneA.col-xs-12 .standardContent .btn[aria-expanded="false"] .fa-minus {
+        display: none;
+    }
+
+    #zoneA.col-xs-12 .standardContent .btn:hover .fas {
+        text-decoration: none;
+    }
+
+    #zoneA.col-xs-12 .standardContent .btn:active .fas {
+        text-decoration: none;
+    }
+
+    #zoneA.col-xs-12 .standardContent .btn:visited .fas {
+        text-decoration: none;
+    }
+
+    #zoneA.col-xs-12 .standardContent .btn:default .fas {
+        text-decoration: none;
+    }
+
+    #zoneA.col-xs-12 .standardContent div.card div.card-body {
+        padding-left: 1.5rem;
+    }
+}
+
+
+
+
+
+/**  filter-search hidden classes  **/
+
+.hideByText, .hideByType, .hideByTerm, .hideByModule, .hideResultsMessage {
+    display: none;
+}
