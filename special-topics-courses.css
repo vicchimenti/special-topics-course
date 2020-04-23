@@ -32,6 +32,8 @@ span.courseTitleWrapper {
 
 span.courseTitle {
     color: #aa0000;
+    font-size: 1.8rem;
+    font-weight: 700;
 }
 
 .standardContent h5 {
