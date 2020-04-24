@@ -17,8 +17,45 @@
 
         <!-- Keyword Search Input -->
         <div class="col-xs-12 input input-wrap text-input">
-            <legend for="id_search">Filter Search</legend>
+            <legend for="id_search">Filter</legend>
             <input type="text" class="form-control" name="searchthispage" value="" id="id_search" placeholder="Search Instantly" autofocus aria-label="Search Keyword" />
+        </div>
+
+
+
+
+        <!-- Search By Term -->
+        <div class="col-xs-12 input input-wrap" id="SelectBox-ByTerm">
+            <legend for="SelectBox-ByTerm">Terms</legend>
+
+            <input type="checkbox" name="SelectBox-ByTerm" id="Summer" value="Summer" />
+            <label for="Summer">Summer Quarter</label><br />
+
+            <input type="checkbox" name="SelectBox-ByTerm" id="Fall" value="Fall" />
+            <label for="Fall">Fall Quarter</label><br/>
+
+            <input type="checkbox" name="SelectBox-ByTerm" id="Winter" value="Winter" />
+            <label for="Winter">Winter Quarter</label><br />
+
+            <input type="checkbox" name="SelectBox-ByTerm" id="Spring" value="Spring" />
+            <label for="Spring">Spring Quarter</label>
+        </div>
+
+
+
+
+        <!-- Search By Module -->
+        <div class="col-xs-12 input input-wrap" id="SelectBox-ByModule">
+            <legend for="SelectBox-ByModule">UCOR Modules</legend>
+            
+            <input type="checkbox" name="SelectBox-ByModule" id="Module I" value="Module I" />
+            <label for="Module I">Module I</label><br />
+            
+            <input type="checkbox" name="SelectBox-ByModule" id="Module II" value="Module II" />
+            <label for="Module II">Module II</label><br />
+            
+            <input type="checkbox" name="SelectBox-ByModule" id="Module III" value="Module III" />
+            <label for="Module III">Module III</label>
         </div>
 
 
@@ -47,43 +84,6 @@
                     <option value="UCOR 3800 Natural Sciences and Global Challenges">UCOR 3800 Natural Sciences and Global Challenges</option>
                 </select>
             </div>
-        </div>
-
-
-
-
-        <!-- Search By Term -->
-        <div class="col-xs-12 input input-wrap" id="SelectBox-ByTerm">
-            <legend for="SelectBox-ByTerm">Upcoming Terms</legend>
-
-            <input type="checkbox" name="SelectBox-ByTerm" id="Summer" value="Summer" />
-            <label for="Summer">Summer Quarter</label><br />
-
-            <input type="checkbox" name="SelectBox-ByTerm" id="Fall" value="Fall" />
-            <label for="Fall">Fall Quarter</label><br/>
-
-            <input type="checkbox" name="SelectBox-ByTerm" id="Winter" value="Winter" />
-            <label for="Winter">Winter Quarter</label><br />
-
-            <input type="checkbox" name="SelectBox-ByTerm" id="Spring" value="Spring" />
-            <label for="Spring">Spring Quarter</label>
-        </div>
-
-
-
-
-        <!-- Search By Module -->
-        <div class="col-xs-12 input input-wrap" id="SelectBox-ByModule">
-            <legend for="SelectBox-ByModule">Module</legend>
-            
-            <input type="checkbox" name="SelectBox-ByModule" id="Module I" value="Module I" />
-            <label for="Module I">Module I/1000-Level</label><br />
-            
-            <input type="checkbox" name="SelectBox-ByModule" id="Module II" value="Module II" />
-            <label for="Module II">Module II/2000-Level</label><br />
-            
-            <input type="checkbox" name="SelectBox-ByModule" id="Module III" value="Module III" />
-            <label for="Module III">Module III/3000-Level</label>
         </div>
     </fieldset>
 </form>

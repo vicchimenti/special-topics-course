@@ -26,6 +26,16 @@ span.courseType {
     font-weight: 550;
 }
 
+span.courseTitleWrapper {
+    color: #aa0000;
+}
+
+span.courseTitle {
+    color: #aa0000;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
 .standardContent h5 {
     font-family: sans-serif;
     font-size: 1.8rem;
