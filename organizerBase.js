@@ -147,6 +147,20 @@ function byOrder(cid, elem) {
     }
 }
 
+/**
+ * Sorts content by course title.
+ * Content type ID and element name have no effect on the returned sorting method.
+ */
+function byCourseTitle(cid, elem) {
+    return function (a, b) {
+        if (a.index > b.index)
+            return 1;
+        if (a.index < b.index)
+            return -1;
+        return 0;
+    }
+}
+
 /* Helper methods */
 
 /**
