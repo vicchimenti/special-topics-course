@@ -38,8 +38,12 @@ try {
   var groupDescription = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Group Description' output='normal' display_field='value' />");
   var keyWords = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Keywords' output='normal' display_field='value' />");
 
+
   /* -- Derive the Course Title -- */
   var courseTitle = prefix + " " + courseNumber + "-" + section + " " + commonName;
+  /* -- Hand entered Course Title -- */
+  var enteredCourseTitle = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Course Title' output='normal' display_field='value' />");
+
 
 
   // var commonNameIdentifier = "UCOR";
