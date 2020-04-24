@@ -153,9 +153,11 @@ function byOrder(cid, elem) {
  */
 function byCourseTitle(cid, elem) {
     return function (a, b) {
-        if (a.index > b.index)
+        var titleA = a.Content.get(elem).getValue();
+        var titleB = b.Content.get(elem).getValue();
+        if (titleA > titleB)
             return 1;
-        if (a.index < b.index)
+        if (titleA < titleB)
             return -1;
         return 0;
     }
