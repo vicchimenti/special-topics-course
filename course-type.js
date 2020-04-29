@@ -12,7 +12,7 @@
   *
   *     Document will write once when the page loads
   *
-  *     @version 2.5
+  *     @version 3.0
   */
 
 
@@ -56,16 +56,19 @@ try {
   //   return x.replace(/^\s+|\s+$/gm, '');
   // }
 
+  /* -- Derive the Course Title Attributes -- */
   var courseTitleArray = courseTitle.split(" ");
   var titleLength = courseTitleArray.length;
+  var coursePrefix = courseTitleArray[0];
+  var courseNumberAndSection = courseTitleArray[1];
+  var courseNumberAndSectionArray = courseNumberAndSection.split("-");
+  var courseNumber = courseNumberAndSectionArray[0];
+  var courseSection = courseNumberAndSectionArray[1];
   var commonName = "";
-  // var temp = " ";
   for (let i = 2; i < titleLength; i++) {
     commonName += courseTitleArray[i] + " ";
   }
 
-
-  // var commonName = temp;
 
 
 
@@ -94,14 +97,18 @@ try {
   document.write('<div class="col-xs-12 courseSummaryWrapper">');
   document.write('<div class="row col-xs-12 courseSummaryHeader">');
   document.write('<div class="col-xs-12 courseDetails courseTypes"><h4>Course Type: </h4><span class="courseType">' + commonName + '</span></div>');
-  document.write('<div class="col-xs-12 col-sm-3 courseDetails instructors"><h5>Faculty: </h5><span class="faculty">' + faculty + '</span></div>');
-  document.write('<div class="col-xs-12 col-sm-3 courseDetails terms"><h5>Term: </h5><span class="term">' + term + '</span></div>');
-  document.write('<div class="col-xs-12 col-sm-3 courseDetails years"><h5>Year: </h5><span class="year">' + year + '</span></div></div>');
-  // document.write('<div class="col-xs-12 col-sm-3 courseDetails ucorModules"><h5>Module: </h5><span class="ucorModule">' + ucorModule + '</span></div></div>');  // Closes courseSummaryHeader row div 
+  document.write('<div class="col-xs-12 col-sm-4 courseDetails coursePrefix"><h5>Faculty: </h5><span class="coursePrefix">' + coursePrefix + '</span></div>');
+  document.write('<div class="col-xs-12 col-sm-4 courseDetails courseNumber"><h5>Term: </h5><span class="courseNumber">' + courseNumber + '</span></div>');
+  document.write('<div class="col-xs-12 col-sm-4 courseDetails courseSection"><h5>Year: </h5><span class="courseSection">' + courseSection + '</span></div></div>'); // Closes courseSummaryHeader row div  
+  document.write('<div class="row col-xs-12 courseSummaryHeader2">');
+  document.write('<div class="col-xs-12 col-sm-4 courseDetails instructors"><h5>Faculty: </h5><span class="faculty">' + faculty + '</span></div>');
+  document.write('<div class="col-xs-12 col-sm-4 courseDetails terms"><h5>Term: </h5><span class="term">' + term + '</span></div>');
+  document.write('<div class="col-xs-12 col-sm-4 courseDetails years"><h5>Year: </h5><span class="year">' + year + '</span></div></div>'); // Closes courseSummaryHeader2 row div
   document.write('</div></div>'); // close courseSummaryWrapper, and card header divs
 
 
 
+  // document.write('<div class="col-xs-12 col-sm-3 courseDetails ucorModules"><h5>Module: </h5><span class="ucorModule">' + ucorModule + '</span></div></div>');   
 
 
   /**** * -- Write the collapsible body -- **** */
@@ -152,32 +159,43 @@ try {
   // prerequisites re-branded as Comments
   if (prerequisites != "") {
     document.write('<div class="row col-xs-12 levelFour">');
-    document.write('<div class="col-xs-12 courseDetails prerequisites"><h5>Comments: </h5><div class="courseInfo">' + prerequisites + '</div></div>');
+    document.write('<div class="col-xs-12 courseDetails prerequisites"><h5>Prerequisites: </h5><div class="courseInfo">' + prerequisites + '</div></div>');
     document.write('</div>');
   } else {
-    document.write('<div class="row levelFour courseDetails prerequisites" style="display: none";><h5>No Comments Provided</h5></div>');
+    document.write('<div class="row levelFour courseDetails prerequisites" style="display: none";><h5>No Prerequisites Provided</h5></div>');
   }
 
 
   /* -- Write Program Level 5 Details --*/
-  // group description re-branded as Common UCOR Course Description
-  if (groupDescription != "") {
+  // prerequisites re-branded as Comments
+  if (comments != "") {
     document.write('<div class="row col-xs-12 levelFive">');
-    document.write('<div class="col-xs-12 courseDetails groupDescription"><h5>Common UCOR Course Description: </h5><div class="courseInfo">' + groupDescription + '</div></div>');
+    document.write('<div class="col-xs-12 courseDetails comments"><h5>Comments: </h5><div class="courseInfo">' + comments + '</div></div>');
     document.write('</div>');
   } else {
-    document.write('<div class="row levelFive courseDetails groupDescription" style="display: none";><h5>No Common UCOR Course Description Provided</h5></div>');
+    document.write('<div class="row levelFive courseDetails comments" style="display: none";><h5>No Comments Provided</h5></div>');
   }
 
 
   /* -- Write Program Level 6 Details --*/
+  // group description re-branded as Common UCOR Course Description
+  if (groupDescription != "") {
+    document.write('<div class="row col-xs-12 levelSix">');
+    document.write('<div class="col-xs-12 courseDetails groupDescription"><h5>Common UCOR Course Description: </h5><div class="courseInfo">' + groupDescription + '</div></div>');
+    document.write('</div>');
+  } else {
+    document.write('<div class="row levelSix courseDetails groupDescription" style="display: none";><h5>No Common UCOR Course Description Provided</h5></div>');
+  }
+
+
+  /* -- Write Program Level 7 Details --*/
   if (keyWords != "") {
     /* -- Keywords is a hidden field that is used to add searchable keywords when creating a program item but is not displayed on the live page -- */
-    document.write('<div class="row col-xs-12 levelSix">');
+    document.write('<div class="row col-xs-12 levelSeven">');
     document.write('<div class="col-xs-12 courseDetails keyWords" style="display: none";><h5>Keywords</h5><div class="courseInfo">' + keyWords + '</div></div>');
     document.write('</div>');
   } else {
-    document.write('<div class="row levelSix courseDetails keyWords" style="display: none";><h5>No Keywords Provided</h5></div>');
+    document.write('<div class="row levelSeven courseDetails keyWords" style="display: none";><h5>No Keywords Provided</h5></div>');
   }
 
 
