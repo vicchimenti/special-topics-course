@@ -12,7 +12,7 @@
   *
   *     Document will write once when the page loads
   *
-  *     @version 2.2
+  *     @version 2.4
   */
 
 
@@ -52,14 +52,18 @@ try {
   // var commonNameArray = contentNameStr.split(":");
   // var commonName2 = commonNameArray[0];
 
+  // function myTrim(x) {
+  //   return x.replace(/^\s+|\s+$/gm, '');
+  // }
+
   var courseTitleArray = courseTitle.split(" ");
   var titleLength = courseTitleArray.length;
-  var commonName = "";
+  // var commonName = "";
   var temp = " ";
   for (let i = 2; i < titleLength; i++) {
     temp += courseTitleArray[i] + " ";
   }
-  commonName = temp.trim();
+  var commonName = temp.replace(/^\s+|\s+$/gm, '');
 
 
 
