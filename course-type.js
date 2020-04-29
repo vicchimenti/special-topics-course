@@ -12,7 +12,7 @@
   *
   *     Document will write once when the page loads
   *
-  *     @version 3.0
+  *     @version 3.1
   */
 
 
@@ -97,9 +97,9 @@ try {
   document.write('<div class="col-xs-12 courseSummaryWrapper">');
   document.write('<div class="row col-xs-12 courseSummaryHeader">');
   document.write('<div class="col-xs-12 courseDetails courseTypes"><h4>Course Type: </h4><span class="courseType">' + commonName + '</span></div>');
-  document.write('<div class="col-xs-12 col-sm-4 courseDetails coursePrefix"><h5>Faculty: </h5><span class="coursePrefix">' + coursePrefix + '</span></div>');
-  document.write('<div class="col-xs-12 col-sm-4 courseDetails courseNumber"><h5>Term: </h5><span class="courseNumber">' + courseNumber + '</span></div>');
-  document.write('<div class="col-xs-12 col-sm-4 courseDetails courseSection"><h5>Year: </h5><span class="courseSection">' + courseSection + '</span></div></div>'); // Closes courseSummaryHeader row div  
+  document.write('<div class="col-xs-12 col-sm-4 courseDetails coursePrefix"><h5>Prefix: </h5><span class="coursePrefix">' + coursePrefix + '</span></div>');
+  document.write('<div class="col-xs-12 col-sm-4 courseDetails courseNumber"><h5>Number: </h5><span class="courseNumber">' + courseNumber + '</span></div>');
+  document.write('<div class="col-xs-12 col-sm-4 courseDetails courseSection"><h5>Section: </h5><span class="courseSection">' + courseSection + '</span></div></div>'); // Closes courseSummaryHeader row div  
   document.write('<div class="row col-xs-12 courseSummaryHeader2">');
   document.write('<div class="col-xs-12 col-sm-4 courseDetails instructors"><h5>Faculty: </h5><span class="faculty">' + faculty + '</span></div>');
   document.write('<div class="col-xs-12 col-sm-4 courseDetails terms"><h5>Term: </h5><span class="term">' + term + '</span></div>');
