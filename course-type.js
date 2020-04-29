@@ -12,7 +12,7 @@
   *
   *     Document will write once when the page loads
   *
-  *     @version 2.0
+  *     @version 2.2
   */
 
 
@@ -55,10 +55,11 @@ try {
   var courseTitleArray = courseTitle.split(" ");
   var titleLength = courseTitleArray.length;
   var commonName = "";
+  var temp = " ";
   for (let i = 2; i < titleLength; i++) {
-    commonName += courseTitleArray[i] + " ";
+    temp += courseTitleArray[i] + " ";
   }
-  commonName = commonName.trim();
+  commonName = temp.trim();
 
 
 
