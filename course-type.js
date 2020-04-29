@@ -36,25 +36,6 @@ try {
   var keyWords = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Keywords' output='normal' display_field='value' />");
 
 
-  /* -- Derive the Course Title -- */
-  // var courseTitle = coursePrefix + " " + courseNumber + "-" + courseSection + " " + commonName;
-  /* -- Hand entered Course Title -- */
-  // var enteredCourseTitle = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Course Title' output='normal' display_field='value' />");
-  // var commonName = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Common Name' output='normal' display_field='value' />");
-  // var coursePrefix = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Course Prefix' output='normal' display_field='value' />");
-  // var courseNumber = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Course Number' output='normal' display_field='value' />");
-  // var courseSection = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Course Section' output='normal' display_field='value' />");
-
-
-
-  // var commonNameIdentifier = "UCOR";
-  // var contentNameStr = contentName.toString();
-  // var commonNameArray = contentNameStr.split(":");
-  // var commonName2 = commonNameArray[0];
-
-  // function myTrim(x) {
-  //   return x.replace(/^\s+|\s+$/gm, '');
-  // }
 
   /* -- Derive the Course Title Attributes -- */
   var courseTitleArray = courseTitle.split(" ");
@@ -71,17 +52,16 @@ try {
 
 
 
-
   /* -- Wrap the content fields -- */
   var beginningHTML = '<div class="contentItem accordion courseItemWrapper" id="id<t4 type=\'meta\' meta=\'content_id\' />"><div class="accordion-group courseItem standardContent"><t4 type=\'meta\' meta=\'html_anchor\' />';
   var endingHTML = '</div></div>';
+
 
 
   /*  -- Parse out Runtime Generated Content IDs -- */
   var cardHeader = '<div class="card-header" id="heading<t4 type=\'meta\' meta=\'content_id\' />">';
   var buttonLink = '<button class="btn btn-link" type="button" id="button<t4 type=\'meta\' meta=\'content_id\' />" data-toggle="collapse" data-target="#collapse<t4 type=\'meta\' meta=\'content_id\' />" aria-expanded="false" aria-controls="collapse<t4 type=\'meta\' meta=\'content_id\' />">';
   var collapseDiv = '<div class="collapse" id="collapse<t4 type=\'meta\' meta=\'content_id\' />">';
-
 
 
   
@@ -93,10 +73,11 @@ try {
   document.write('<span class="courseTitleWrapper"><i class="fas fa-minus"></i><i class="fas fa-plus"></i><span class="courseTitle">' + courseTitle + '</span></span></button>');  // close buttonLink tag here
 
 
+
   /* -- Write the open viewable summary header -- */
   document.write('<div class="col-xs-12 courseSummaryWrapper">');
   document.write('<div class="row col-xs-12 courseSummaryHeader">');
-  document.write('<div class="col-xs-12 courseDetails courseTypes"><h4>Course Type: </h4><span class="courseType">' + commonName + '</span></div>');
+  document.write('<div class="col-xs-12 courseDetails commonNames"><h4>Course Type: </h4><span class="commonName">' + commonName + '</span></div>');
   document.write('<div class="col-xs-12 col-sm-4 courseDetails coursePrefix"><h5>Prefix: </h5><span class="coursePrefix">' + coursePrefix + '</span></div>');
   document.write('<div class="col-xs-12 col-sm-4 courseDetails courseNumber"><h5>Number: </h5><span class="courseNumber">' + courseNumber + '</span></div>');
   document.write('<div class="col-xs-12 col-sm-4 courseDetails courseSection"><h5>Section: </h5><span class="courseSection">' + courseSection + '</span></div></div>'); // Closes courseSummaryHeader row div  
@@ -108,11 +89,9 @@ try {
 
 
 
-  // document.write('<div class="col-xs-12 col-sm-3 courseDetails ucorModules"><h5>Module: </h5><span class="ucorModule">' + ucorModule + '</span></div></div>');   
-
-
   /**** * -- Write the collapsible body -- **** */
   document.write(com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, collapseDiv));  // closed in *** write closing tags ***
+
 
 
   /* -- Write Program Cards--*/
@@ -120,9 +99,11 @@ try {
   document.write('<div class="container-fluid">');
 
 
+
   /* -- Write the collapsed summary header -- */
   document.write('<div class="row col-xs-12 fullCourseDescriptionWrapper">');
   document.write('<div class="col-xs-12 courseDetails courseDescriptions"><h5>Course Description: </h5><div class="courseInfo">' + courseDescription + '</div></div></div>'); // close fullCourseDescriptionWrapper div
+
 
 
   /* -- Write Program Level 1 Details --*/
@@ -135,6 +116,7 @@ try {
   }
 
 
+
   /* -- Write Program Level 2 Details --*/
   if (assignments != "") {
     document.write('<div class="row col-xs-12 levelTwo">');
@@ -145,6 +127,7 @@ try {
   }
 
 
+
   /* -- Write Program Level 3 Details --*/
   if (textbooks != "") {
     document.write('<div class="row col-xs-12 levelThree">');
@@ -153,6 +136,7 @@ try {
   } else {
     document.write('<div class="row levelThree courseDetails textbooks" style="display: none";><h5>No Textbooks Provided</h5></div>');
   }
+
 
 
   /* -- Write Program Level 4 Details --*/
@@ -166,6 +150,7 @@ try {
   }
 
 
+
   /* -- Write Program Level 5 Details --*/
   // prerequisites re-branded as Comments
   if (comments != "") {
@@ -175,6 +160,7 @@ try {
   } else {
     document.write('<div class="row levelFive courseDetails comments" style="display: none";><h5>No Comments Provided</h5></div>');
   }
+
 
 
   /* -- Write Program Level 6 Details --*/
@@ -188,6 +174,7 @@ try {
   }
 
 
+
   /* -- Write Program Level 7 Details --*/
   if (keyWords != "") {
     /* -- Keywords is a hidden field that is used to add searchable keywords when creating a program item but is not displayed on the live page -- */
@@ -199,11 +186,11 @@ try {
   }
 
 
+
   /* -- Write Closing Tags -- */
   document.write('</div></div></div>');  // close the card-body and container-fluid and collapse div
   document.write('</div>'); // close the card
   document.write(endingHTML);
-
 
 
 
