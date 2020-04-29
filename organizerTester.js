@@ -161,14 +161,9 @@ function byOrder(cid, elem) {
 // added by Victor 20200424
 function byCourseTitle(cid, elem) {
     return function (a, b) {
-        var titleA = a.Content.get(elem).getValue();
-        var titleB = b.Content.get(elem).getValue();
-        if (titleA > titleB)
-            return 1;
-        if (titleA < titleB)
-            return -1;
-        return 0;
-    }
+        var nameA = String(a.Content.get(elem)).replace(/[^\w\s]/gi, '').toLowerCase();
+        var nameB = String(b.Content.get(elem)).replace(/[^\w\s]/gi, '').toLowerCase();
+        return nameA.localeCompare(nameB);
 }
 
 
