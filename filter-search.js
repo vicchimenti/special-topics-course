@@ -175,37 +175,39 @@ $(function () {
 
 
             //   ***   Module Filter   ***   //
-            $(function () {
-                // When the Dropdown Menu Selector Academic Terms Change - Execute change function
-                $('#SelectBox-ByModule').change(function () {
-                    // initialize an array of keys to hold each check box selected
-                    let moduleKeys = [];
-                    moduleKeys[0] = -1;
-                    $('input[name=SelectBox-ByModule]:checked').each(function(item) {
-                        moduleKeys[item] = $(this).val();
-                    });
-                    // If Search Key array has at least one valid value then Compare to the Each Content Item in term
-                    if (moduleKeys[0] != -1) {
-                        $('.ucorModule').filter(function (i, e) {
-                            let moduleValue = $(this).text();
-                            // set state to hidden for all items
-                            $(this).parents('.courseItemWrapper').addClass('hideByModule');
-                            // Check to see if the Key and Value are exactly equal
-                            for (let index = 0; index < moduleKeys.length; index++) {
-                                if (moduleValue === moduleKeys[index]) {
-                                    // make current item visible when we validate a match
-                                    $(this).parents('.courseItemWrapper').removeClass('hideByModule');
-                                }
-                            }
-                        });
-                    // Else the Search Key is Null so Reset all Content Items to Visible
-                    } else {
-                        $('.courseItemWrapper').removeClass('hideByModule');
-                    }
-                    // parse out unselected content items and limit display to user selected items
-                    parseItems.process();
-                });
-            });
+            // $(function () {
+            //     // When the Dropdown Menu Selector Academic Terms Change - Execute change function
+            //     $('#SelectBox-ByModule').change(function () {
+            //         // initialize an array of keys to hold each check box selected
+            //         let moduleKeys = [];
+            //         moduleKeys[0] = -1;
+            //         $('input[name=SelectBox-ByModule]:checked').each(function(item) {
+            //             moduleKeys[item] = $(this).val();
+            //         });
+            //         // If Search Key array has at least one valid value then Compare to the Each Content Item in term
+            //         if (moduleKeys[0] != -1) {
+            //             $('.ucorModule').filter(function (i, e) {
+            //                 let moduleValue = $(this).text();
+            //                 // set state to hidden for all items
+            //                 $(this).parents('.courseItemWrapper').addClass('hideByModule');
+            //                 // Check to see if the Key and Value are exactly equal
+            //                 for (let index = 0; index < moduleKeys.length; index++) {
+            //                     if (moduleValue === moduleKeys[index]) {
+            //                         // make current item visible when we validate a match
+            //                         $(this).parents('.courseItemWrapper').removeClass('hideByModule');
+            //                     }
+            //                 }
+            //             });
+            //         // Else the Search Key is Null so Reset all Content Items to Visible
+            //         } else {
+            //             $('.courseItemWrapper').removeClass('hideByModule');
+            //         }
+            //         // parse out unselected content items and limit display to user selected items
+            //         parseItems.process();
+            //     });
+            // });
+
+
         }, 10);
     });
 });
