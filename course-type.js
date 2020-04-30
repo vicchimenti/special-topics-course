@@ -12,7 +12,7 @@
   *
   *     Document will write once when the page loads
   *
-  *     @version 3.1
+  *     @version 3.2
   */
 
 
@@ -140,7 +140,7 @@ try {
 
 
   /* -- Write Program Level 4 Details --*/
-  // prerequisites re-branded as Comments
+  // prerequisites
   if (prerequisites != "") {
     document.write('<div class="row col-xs-12 levelFour">');
     document.write('<div class="col-xs-12 courseDetails prerequisites"><h5>Prerequisites: </h5><div class="courseInfo">' + prerequisites + '</div></div>');
@@ -152,10 +152,10 @@ try {
 
 
   /* -- Write Program Level 5 Details --*/
-  // prerequisites re-branded as Comments
+  // Comments are a plain text entry field so they need to be wrapped in a paragraph and a span to match level four and up
   if (comments != "") {
     document.write('<div class="row col-xs-12 levelFive">');
-    document.write('<div class="col-xs-12 courseDetails comments"><h5>Comments: </h5><div class="courseInfo">' + comments + '</div></div>');
+    document.write('<div class="col-xs-12 courseDetails comments"><h5>Comments: </h5><div class="courseInfo"><p><span>' + comments + '</span></p></div></div>');
     document.write('</div>');
   } else {
     document.write('<div class="row levelFive courseDetails comments" style="display: none";><h5>No Comments Provided</h5></div>');
@@ -164,13 +164,13 @@ try {
 
 
   /* -- Write Program Level 6 Details --*/
-  // group description re-branded as Common UCOR Course Description
+  // group description is a plain text entry field so they need to be wrapped in a paragraph and a span to match level four and up
   if (groupDescription != "") {
     document.write('<div class="row col-xs-12 levelSix">');
-    document.write('<div class="col-xs-12 courseDetails groupDescription"><h5>Common UCOR Course Description: </h5><div class="courseInfo">' + groupDescription + '</div></div>');
+    document.write('<div class="col-xs-12 courseDetails groupDescription"><h5>Common Group Description: </h5><div class="courseInfo"><p><span>' + groupDescription + '</span></p></div></div>');
     document.write('</div>');
   } else {
-    document.write('<div class="row levelSix courseDetails groupDescription" style="display: none";><h5>No Common UCOR Course Description Provided</h5></div>');
+    document.write('<div class="row levelSix courseDetails groupDescription" style="display: none";><h5>No Common Group Description Provided</h5></div>');
   }
 
 
