@@ -36,7 +36,7 @@ $(function () {
             $(function () {
                 let parseItemsToDisplay = function() {
                     // assign array of currently visible content items
-                    visibleItems = $('.courseItemWrapper').not('.hideByText, .hideByType, .hideByTerm, .hideByModule');
+                    visibleItems = $('.courseItemWrapper').not('.hideByText, .hideByType, .hideByTerm, .hideByYear');
                     // check to see if array is empty
                     if (visibleItems.length == 0) {
                         // when array is empty show the results message
