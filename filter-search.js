@@ -138,6 +138,42 @@ $(function () {
 
 
 
+            //   ***   Year Filter   ***   //
+            $(function () {
+                // When the Multi-Select Checkbox Selector for Academic Terms Changes - Execute change function 
+                $('#SelectBox-ByYear').change(function () {
+                    // initialize an array of keys to hold each check box selected
+                    let yearKeys = [];
+                    yearKeys[0] = -1;
+                    $('input[name=SelectBox-ByYear]:checked').each(function (item) {
+                        yearKeys[item] = $(this).val();
+                    });
+                    // If Search Key array has at least one valid value then Compare to the Each Content Item in term
+                    if (yearKeys[0] != -1) {
+                        $('.year').filter(function (i, e) {
+                            let yearValue = $(this).text();
+                            // set state to hidden for all items
+                            $(this).parents('.courseItemWrapper').addClass('hideByYear');
+                            // Check to see if any Key is a match with the current Value
+                            for (let index = 0; index < yearKeys.length; index++) {
+                                if (yearValue.match(yearKeys[index])) {
+                                    // make current item visible when we validate a match
+                                    $(this).parents('.courseItemWrapper').removeClass('hideByYear');
+                                }
+                            }
+                        });
+                        // Else the Search Key is Null so Reset all Content Items to Visible
+                    } else {
+                        $('.courseItemWrapper').removeClass('hideByYear');
+                    }
+                    // parse out unselected content items and limit display to user selected items
+                    parseItems.process();
+                });
+            });
+
+
+
+
             //   ***   Module Filter   ***   //
             $(function () {
                 // When the Dropdown Menu Selector Academic Terms Change - Execute change function
