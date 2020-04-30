@@ -55,7 +55,7 @@ $(function () {
             //   ***   Keyword Search   ***   //
             $(function () {
                 // scan the keyword each character the user inputs
-                $('#id_search').on('keyup', function () {
+                $('#keystroke_filter').on('keyup', function () {
                     // Assign Search Key
                     let keyword = $(this).val().toLowerCase();
                     // filter the education abroad items for the input key
