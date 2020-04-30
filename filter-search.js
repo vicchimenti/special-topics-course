@@ -111,7 +111,7 @@ $(function () {
 
             //   ***   Year Filter   ***   //
             $(function () {
-                // When the Multi-Select Checkbox Selector for Academic Terms Changes - Execute change function 
+                // When the Multi-Select Checkbox Selector for Calendar Year Changes - Execute change function 
                 $('#SelectBox-ByYear').change(function () {
                     // initialize an array of keys to hold each check box selected
                     let yearKeys = [];
@@ -119,7 +119,7 @@ $(function () {
                     $('input[name=SelectBox-ByYear]:checked').each(function (item) {
                         yearKeys[item] = $(this).val();
                     });
-                    // If Search Key array has at least one valid value then Compare to the Each Content Item in term
+                    // If Search Key array has at least one valid value then Compare to the Each Content Item in year
                     if (yearKeys[0] != -1) {
                         $('.year').filter(function (i, e) {
                             let yearValue = $(this).text();
