@@ -574,7 +574,6 @@ span.courseTitle {
 
 
 /**  filter-search hidden classes  **/
-
-.hideByText, .hideByType, .hideByTerm, .hideByModule, .hideResultsMessage {
+.hideByText, .hideByType, .hideByTerm, .hideByYear, .hideResultsMessage {
     display: none;
 }
