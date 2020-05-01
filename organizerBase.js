@@ -2,6 +2,8 @@
 // last updated by Megan 2-7-20 to prepare for upgrade to 8.3
 // last updated by Jason 2-13-19 to fix pagination after in broke with update to 8.2.17
 // reverted
+// last updated by Victor 5-1-2020 to fix pagination bug discovered with Summary + Link option
+
 
 importClass(com.terminalfour.sitemanager.cache.CachedContent);
 importClass(com.terminalfour.navigation.ServerSideLinkManager);
@@ -330,7 +332,8 @@ function main(header, midder, footer) {
         // prepare for first content item
         first = true;
         //log("Valid Content Length: " + validContent.length);
-        if (bSummFirst) { LIMIT = 100 } // get rid of limit if using summary first layout
+        // Limit set at 100 commented out by victor 5-1-2020
+        //if (bSummFirst) { LIMIT = 100 } // get rid of limit if using summary first layout
         log("LIMIT: " + LIMIT);
         log("nPerPage: " + nPerPage);
         for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
