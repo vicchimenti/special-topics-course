@@ -147,22 +147,6 @@ function byOrder(cid, elem) {
     }
 }
 
-/**
- * Sorts content by course title.
- * Content type ID and element name have no effect on the returned sorting method.
- */
-function byCourseTitle(cid, elem) {
-    return function (a, b) {
-        var titleA = a.Content.get(elem).getValue();
-        var titleB = b.Content.get(elem).getValue();
-        if (titleA > titleB)
-            return 1;
-        if (titleA < titleB)
-            return -1;
-        return 0;
-    }
-}
-
 /* Helper methods */
 
 /**
@@ -222,10 +206,10 @@ function main(header, midder, footer) {
     if (sViewAllText == "")
         sViewAllText = "View All";
     var bSummFirst = (LAYOUT == "v9/organizer/newsArticleSummary/Link");
-  	if(bSummFirst){
-    	LAYOUT = "v9/organizer/newsArticleSummary";
-  	}
-  
+    if (bSummFirst) {
+        LAYOUT = "v9/organizer/newsArticleSummary";
+    }
+
     // Get section
     var oSSLM = ServerSideLinkManager.getManager();
     var mySectionLinkID = Number(SSID);
@@ -274,8 +258,8 @@ function main(header, midder, footer) {
             //document.write('valid\n-->');
         }
         else {
-          //log("     Content Invalid")
-          //document.write('not valid\n-->');
+            //log("     Content Invalid")
+            //document.write('not valid\n-->');
         }
     }
     //log("Number of content items" + validContent.length);
@@ -318,13 +302,13 @@ function main(header, midder, footer) {
         var vector = new java.util.Vector(java.util.Arrays.asList(contentInfo));
         // changes below 2-13-19 by Jason due to API change
         //var paginator = ApplicationContextProvider.getBean(com.terminalfour.navigation.items.utils.NavigationPaginator);
-        var sectionPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean (com.terminalfour.publish.SectionPublisher),
-    	contentPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean (com.terminalfour.publish.ContentPublisher),
-    	publishHelper = com.terminalfour.spring.ApplicationContextProvider.getBean (com.terminalfour.publish.PublishHelper),
-    	paginator = new NavigationPaginator (sectionPublisher, contentPublisher, publishHelper);
+        var sectionPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean(com.terminalfour.publish.SectionPublisher),
+            contentPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean(com.terminalfour.publish.ContentPublisher),
+            publishHelper = com.terminalfour.spring.ApplicationContextProvider.getBean(com.terminalfour.publish.PublishHelper),
+            paginator = new NavigationPaginator(sectionPublisher, contentPublisher, publishHelper);
         // end 2-13-19 changes
         paginator.setContentPerPage((nPerPage > 0 ? nPerPage : 10));
-        log("nPerPage: " + nPerPage);      
+        log("nPerPage: " + nPerPage);
         paginator.setFormatter(LAYOUT);
         paginator.setLinksToShow(10);
         var before = '<div class="paginationWrapper"><div class="pagination"><span class="paginationNumber">';
@@ -350,19 +334,19 @@ function main(header, midder, footer) {
         log("LIMIT: " + LIMIT);
         log("nPerPage: " + nPerPage);
         for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
-          //log(LIMIT);
-          //log(bSummFirst);
-          //log("Is Limit Passed: " + isLimitPassed(i, LIMIT));
-          // if first print content item completely
-          if (first) {
-            oLayout = LAYOUT;
-            first = false;
-          }
-          // if not first print link version if requested but normally otherwise
-          else {
-            oLayout = bSummFirst ? LAYOUT + "/Link" : LAYOUT ;
-          }
-          oCP.write(oT4SW, dbStatement, publishCache, oSection, validContent[i].Content, oLayout, isPreview);
+            //log(LIMIT);
+            //log(bSummFirst);
+            //log("Is Limit Passed: " + isLimitPassed(i, LIMIT));
+            // if first print content item completely
+            if (first) {
+                oLayout = LAYOUT;
+                first = false;
+            }
+            // if not first print link version if requested but normally otherwise
+            else {
+                oLayout = bSummFirst ? LAYOUT + "/Link" : LAYOUT;
+            }
+            oCP.write(oT4SW, dbStatement, publishCache, oSection, validContent[i].Content, oLayout, isPreview);
         }
 
         document.write(oSW.toString());
