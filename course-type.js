@@ -185,7 +185,7 @@ try {
   if (keyWords != "") {
     /* -- Keywords is a hidden field that is used to add searchable keywords when creating a program item but is not displayed on the live page -- */
     document.write('<div class="row col-xs-12 levelSeven">');
-    document.write('<div class="col-xs-12 courseDetails keyWords empty"><h5>Keywords: </h5><div class="courseInfo">' + keyWords + '</div></div>');
+    document.write('<div class="col-xs-12 courseDetails keyWords empty"><h5>Keywords: </h5><div class="courseInfo empty">' + keyWords + '</div></div>');
     document.write('</div>');
   } else {
     document.write('<div class="row levelSeven courseDetails keyWords empty"><h5>No Keywords Provided</h5></div>');
