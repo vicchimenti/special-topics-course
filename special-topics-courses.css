@@ -21,7 +21,7 @@ li {
     font-weight: 500;
 }
 
-span.commonName {
+span.courseType {
     font-size: 1.7rem;
     font-weight: 550;
 }
@@ -162,7 +162,7 @@ span.courseTitle {
     text-decoration: none;
 }
 
-#zoneA.col-md-9 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent div.card div.card-header div.courseSummaryWrapper div.row.col-xs-12.courseDetails span.commonName {
+#zoneA.col-md-9 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent div.card div.card-header div.courseSummaryWrapper div.row.col-xs-12.courseDetails span.courseType {
     font-size: 1.75rem;
     font-weight: 550;
 }
@@ -417,7 +417,7 @@ span.courseTitle {
         padding-left: 30px;
     }
 
-    #zoneA.col-xs-12 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent div.card div.card-header div.courseSummaryWrapper div.row.col-xs-12.courseDetails span.commonName {
+    #zoneA.col-xs-12 div.organizerWrapper div.organizer.standardContent div.courseItemWrapper div.courseItem.standardContent div.card div.card-header div.courseSummaryWrapper div.row.col-xs-12.courseDetails span.courseType {
         font-size: 1.75rem;
         font-weight: 550;
     }
