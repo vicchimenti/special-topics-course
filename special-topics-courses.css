@@ -21,10 +21,6 @@ li {
     font-weight: 500;
 }
 
-div.empty {
-    display: none;
-}
-
 span.courseType {
     font-size: 1.7rem;
     font-weight: 550;
