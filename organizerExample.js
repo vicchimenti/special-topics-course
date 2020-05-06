@@ -343,9 +343,9 @@ function main(header, midder, footer) {
         var vector = new java.util.Vector(java.util.Arrays.asList(contentInfo));
         // changes below 2-13-19 by Jason due to API change
         var sectionPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean (com.terminalfour.publish.SectionPublisher),
-          contentPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean (com.terminalfour.publish.ContentPublisher),
-          publishHelper = com.terminalfour.spring.ApplicationContextProvider.getBean (com.terminalfour.publish.PublishHelper),
-          paginator = new NavigationPaginator (sectionPublisher, contentPublisher, publishHelper);
+            contentPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean (com.terminalfour.publish.ContentPublisher),
+            publishHelper = com.terminalfour.spring.ApplicationContextProvider.getBean (com.terminalfour.publish.PublishHelper),
+            paginator = new NavigationPaginator (sectionPublisher, contentPublisher, publishHelper);
         // end 2-13-19 changes
         paginator.setContentPerPage((nPerPage > 0 ? nPerPage : 10));
         paginator.setFormatter(LAYOUT);
@@ -357,8 +357,7 @@ function main(header, midder, footer) {
         paginator.setBeforeAndAfterHTML(header, footer);
         paginator.setPreview(isPreview);
         paginator.write(document, dbStatement, publishCache, section, language, isPreview, vector);
-    }
-    else {
+    } else {
         document.write(header);
         var oSW = new java.io.StringWriter();
         var oT4SW = new T4StreamWriter(oSW);
@@ -384,6 +383,62 @@ function main(header, midder, footer) {
         document.write(midder);
         document.write(footer);
     }
+
+
+
+    if (bPaginate && !bSummFirst) {
+      var contentInfo = [];
+      for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
+          var tci = new TargetContentInfo(validContent[i].CachedContent, oSection, language);
+          contentInfo.push(tci);            
+      }
+      var vector = new java.util.Vector(java.util.Arrays.asList(contentInfo));
+      // changes below 2-13-19 by Jason due to API change
+      var sectionPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean (com.terminalfour.publish.SectionPublisher),
+          contentPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean (com.terminalfour.publish.ContentPublisher),
+          publishHelper = com.terminalfour.spring.ApplicationContextProvider.getBean (com.terminalfour.publish.PublishHelper),
+          paginator = new NavigationPaginator (sectionPublisher, contentPublisher, publishHelper);
+      // end 2-13-19 changes
+      paginator.setContentPerPage((nPerPage > 0 ? nPerPage : 10));
+      paginator.setFormatter(LAYOUT);
+      paginator.setLinksToShow(10);
+      var before = '<div class="paginationWrapper"><div class="pagination"><span class="paginationNumber">';
+      var middle = '</span><span class="paginationNumber">';
+      var after = '</span></div></div>';
+      paginator.setPageSeparators(before, middle, after);
+      paginator.setBeforeAndAfterHTML(header, footer);
+      paginator.setPreview(isPreview);
+      paginator.write(document, dbStatement, publishCache, section, language, isPreview, vector);
+  } else if (bPaginate && bSummFirst) {
+
+    // do some stuff without LIMIT = 100
+
+  } else {
+      document.write(header);
+      var oSW = new java.io.StringWriter();
+      var oT4SW = new T4StreamWriter(oSW);
+      var oCP = new ContentPublisher();
+      // prepare for first content item
+      first = true;
+      // get rid of limit if using summary first layout
+      if (bSummFirst) { LIMIT = 100 }
+      for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
+        // if first print content item completely
+        if (first) {
+          oLayout = LAYOUT;
+          first = false;
+        }
+        // if not first print link version if requested but normally otherwise
+        else {
+          oLayout = bSummFirst ? LAYOUT + "/Link" : LAYOUT ;
+        }
+        oCP.write(oT4SW, dbStatement, publishCache, oSection, validContent[i].Content, oLayout, isPreview);
+      }
+
+      document.write(oSW.toString());
+      document.write(midder);
+      document.write(footer);
+  }
 
 }
 
