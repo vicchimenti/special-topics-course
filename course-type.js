@@ -12,7 +12,7 @@
   *
   *     Document will write once when the page loads
   *
-  *     @version 3.3
+  *     @version 3.4
   */
 
 
@@ -79,6 +79,7 @@ try {
   document.write('<div class="col-xs-12 courseSummaryWrapper">');
   document.write('<div class="row col-xs-12 courseSummaryHeader">');
   document.write('<div class="col-xs-12 courseDetails commonTypes"><h4>Course Type: </h4><span class="courseType">' + commonName + '</span></div>');
+  document.write('<div class="col-xs-12 courseDetails commonName"><h4>Course Type: </h4><span class="commonName">' + commonName + '</span></div>');
   document.write('<div class="col-xs-12 col-sm-4 courseDetails coursePrefix"><h5>Prefix: </h5><span class="coursePrefix">' + coursePrefix + '</span></div>');
   document.write('<div class="col-xs-12 col-sm-4 courseDetails courseNumber"><h5>Number: </h5><span class="courseNumber">' + courseNumber + '</span></div>');
   document.write('<div class="col-xs-12 col-sm-4 courseDetails courseSection"><h5>Section: </h5><span class="courseSection">' + courseSection + '</span></div></div>'); // Closes courseSummaryHeader row div  
