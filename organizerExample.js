@@ -335,21 +335,17 @@ function main(header, midder, footer) {
     }
 
     if (bPaginate && !bSummFirst) {
-      //console.log("paginate yes bSummFirst no");
         var contentInfo = [];
         for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
             var tci = new TargetContentInfo(validContent[i].CachedContent, oSection, language);
-            contentInfo.push(tci);
-            
-            //document.write(" [" + validContent[i].Content.getVersion() + "] ");
+            contentInfo.push(tci);            
         }
         var vector = new java.util.Vector(java.util.Arrays.asList(contentInfo));
         // changes below 2-13-19 by Jason due to API change
-        //var paginator = ApplicationContextProvider.getBean(com.terminalfour.navigation.items.utils.NavigationPaginator);
         var sectionPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean (com.terminalfour.publish.SectionPublisher),
-    	contentPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean (com.terminalfour.publish.ContentPublisher),
-    	publishHelper = com.terminalfour.spring.ApplicationContextProvider.getBean (com.terminalfour.publish.PublishHelper),
-    	paginator = new NavigationPaginator (sectionPublisher, contentPublisher, publishHelper);
+          contentPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean (com.terminalfour.publish.ContentPublisher),
+          publishHelper = com.terminalfour.spring.ApplicationContextProvider.getBean (com.terminalfour.publish.PublishHelper),
+          paginator = new NavigationPaginator (sectionPublisher, contentPublisher, publishHelper);
         // end 2-13-19 changes
         paginator.setContentPerPage((nPerPage > 0 ? nPerPage : 10));
         paginator.setFormatter(LAYOUT);
@@ -360,36 +356,27 @@ function main(header, midder, footer) {
         paginator.setPageSeparators(before, middle, after);
         paginator.setBeforeAndAfterHTML(header, footer);
         paginator.setPreview(isPreview);
-        //log("before write");
         paginator.write(document, dbStatement, publishCache, section, language, isPreview, vector);
-        //log("after write");
     }
     else {
-        //log("qwe");
         document.write(header);
         var oSW = new java.io.StringWriter();
         var oT4SW = new T4StreamWriter(oSW);
         var oCP = new ContentPublisher();
         // prepare for first content item
         first = true;
-        //log("Valid Content Length: " + validContent.length);
-        if (bSummFirst) { LIMIT = 100 } // get rid of limit if using summary first layout
+        // get rid of limit if using summary first layout
+        if (bSummFirst) { LIMIT = 100 }
         for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
-          //log("I: " + i);
-          //log("Is Limit Passed: " + isLimitPassed(i, LIMIT));
           // if first print content item completely
-         //log("inside loop LIMIT is: " + LIMIT);
           if (first) {
             oLayout = LAYOUT;
             first = false;
-            //log("xxxxxxx");
           }
           // if not first print link version if requested but normally otherwise
           else {
             oLayout = bSummFirst ? LAYOUT + "/Link" : LAYOUT ;
-            //log("i: " + i );
           }
-          //log(validContent[i].Content.get('Name'));
           oCP.write(oT4SW, dbStatement, publishCache, oSection, validContent[i].Content, oLayout, isPreview);
         }
 
