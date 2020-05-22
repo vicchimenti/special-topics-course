@@ -26,7 +26,10 @@
 try {
     /* -- Initialize function scope variables -- */
     var contentName = content.get("Name");
-    var courseTitle = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Course Title' output='normal' display_field='value' />");
+    var courseTitle = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Course Name' output='normal' display_field='value' />");
+    var coursePrefix = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Prefix' output='normal' display_field='value' />");
+    var courseSection = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Section' output='normal' display_field='value' />");
+    var courseNumber = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Number' output='normal' display_field='value' />");
     var term = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Term' output='normal' display_field='value' />");
     var year = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Year' output='normal' display_field='value' />");
     var faculty = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Faculty' output='normal' display_field='value' />");
@@ -47,11 +50,11 @@ try {
     /* -- Derive the Course Title Attributes -- */
     var courseTitleArray = courseTitle.split(" ");
     var titleLength = courseTitleArray.length;
-    var coursePrefix = courseTitleArray[0];
+    // var coursePrefix = courseTitleArray[0];
     var courseNumberAndSection = courseTitleArray[1];
     var courseNumberAndSectionArray = courseNumberAndSection.split("-");
-    var courseNumber = courseNumberAndSectionArray[0];
-    var courseSection = courseNumberAndSectionArray[1];
+    // var courseNumber = courseNumberAndSectionArray[0];
+    // var courseSection = courseNumberAndSectionArray[1];
     var commonName = "";
     for (let i = 2; i < titleLength; i++) {
         commonName += courseTitleArray[i] + " ";
