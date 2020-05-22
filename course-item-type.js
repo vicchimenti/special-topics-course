@@ -1,6 +1,6 @@
 /***
 *     @author Victor Chimenti, MSCS 2020
-*     @file course-type.js
+*     @file course-item-type.js
 *
 *     This new content type is being created for the University Registrar
 *     to host entries that are mapped from a Terminal 4 form which will be
