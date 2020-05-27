@@ -6,7 +6,7 @@
 *     to host entries that are mapped from a Terminal 4 form which will be
 *     filled out by professors to describe their course.
 * 
-*     The content type generated from the mapping of this form wioll be used
+*     The content type generated from the mapping of this form will be used
 *     as a sortable, searchable content item managed by the organizer.js
 *     and displayed on any primary page layout in the University
 *     (Homepage, Landing Page, Standard Subpage).
@@ -18,7 +18,7 @@
 *
 *     Document will write once when the page loads
 *
-*     @version 1.0
+*     @version 1.1
 */
 
 
