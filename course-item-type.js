@@ -44,26 +44,6 @@ try {
     var keyWords = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Keywords' output='normal' display_field='value' />");
 
 
-    // var ucorType = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='UCOR Types' output='normal' display_field='value' />");
-    // var ucorModule = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='UCOR Module' output='normal' display_field='value' />");
-    // var courseType = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Course Type' output='normal' display_field='value' />");
-
-
-
-    // /* -- Derive the Course Title Attributes -- */
-    // var courseTitleArray = courseTitle.split(" ");
-    // var titleLength = courseTitleArray.length;
-    // // var coursePrefix = courseTitleArray[0];
-    // var courseNumberAndSection = courseTitleArray[1];
-    // var courseNumberAndSectionArray = courseNumberAndSection.split("-");
-    // // var courseNumber = courseNumberAndSectionArray[0];
-    // // var courseSection = courseNumberAndSectionArray[1];
-    // var commonName = "";
-    // for (let i = 2; i < titleLength; i++) {
-    //     commonName += courseTitleArray[i] + " ";
-    // }
-
-
 
     /* -- Wrap the content fields -- */
     var beginningHTML = '<div class="contentItem accordion courseItemWrapper" id="id<t4 type=\'meta\' meta=\'content_id\' />"><div class="accordion-group courseItem standardContent"><t4 type=\'meta\' meta=\'html_anchor\' />';
