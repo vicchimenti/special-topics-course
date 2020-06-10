@@ -43,6 +43,8 @@ try {
     var comments = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Comments' output='normal' display_field='value' />");
     var keyWords = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Keywords' output='normal' display_field='value' />");
 
+    console.log("name: " + contentName);
+    console.log("title: " + courseTitle);
 
 
     /* -- Wrap the content fields -- */
