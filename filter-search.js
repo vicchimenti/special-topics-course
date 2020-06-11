@@ -36,7 +36,7 @@ $(function () {
             $(function () {
                 let parseItemsToDisplay = function() {
                     // assign array of currently visible content items
-                    visibleItems = $('.courseItemWrapper').not('.hideByText, .hideByType, .hideByTerm, .hideByYear');
+                    visibleItems = $('.courseItemWrapper').not('.hideByText, .hideByPrefix, .hideByType, .hideByTerm, .hideByYear');
                     // check to see if array is empty
                     if (visibleItems.length == 0) {
                         // when array is empty show the results message
@@ -147,26 +147,26 @@ $(function () {
 
 
 
-            //   ***   Type Filter   ***   //
+            //   ***   Prefix Filter   ***   //
             $(function () {
                 // When the Dropdown Menu Selector Course Types Change - Execute change function
-                $('#SelectBox-ByType').change(function () {
+                $('#SelectBox-ByPrefix').change(function () {
                     // Assign Search Key
-                    let typeKey = $(this).val();
+                    let prefixKey = $(this).val();
                     // If Search Key is Not Null then Compare to the Type List Items in Each Content Item
-                    if (typeKey) {
-                        $('.courseType').filter(function (i, e) {
-                            var typeValue = $(this).text();
+                    if (prefixKey) {
+                        $('.coursePrefix').filter(function (i, e) {
+                            var prefixValue = $(this).text();
                             // Check to see if the Key and Value are a Match
-                            if (typeValue.match(typeKey)) {
-                                $(this).parents('.courseItemWrapper').removeClass('hideByType');
+                            if (prefixValue.match(prefixKey)) {
+                                $(this).parents('.courseItemWrapper').removeClass('hideByPrefix');
                             } else {
-                                $(this).parents('.courseItemWrapper').addClass('hideByType');
+                                $(this).parents('.courseItemWrapper').addClass('hideByPrefix');
                             }
                         });
                         // Else the Search Key is Null so Reset all Content Items to Visible
                     } else {
-                        $('.courseItemWrapper').removeClass('hideByType');
+                        $('.courseItemWrapper').removeClass('hideByPrefix');
                     }
                     // parse out unselected content items and limit display to user selected items
                     parseItems.process();
