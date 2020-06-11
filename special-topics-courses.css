@@ -578,6 +578,6 @@ div.col-xs-12 courseSummaryWrapper {
 
 
 /**  filter-search hidden classes  **/
-.hideByText, .hideByType, .hideByTerm, .hideByYear, .hideResultsMessage {
+.hideByText, .hideByPrefix, .hideByType, .hideByTerm, .hideByYear, .hideResultsMessage {
     display: none;
 }
