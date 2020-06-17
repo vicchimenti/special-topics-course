@@ -68,7 +68,7 @@ try {
     document.write('<div class="card">'); // closed individually in *** write closing tags *** found near bottom of file currently line 142
     document.write(com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, cardHeader));
     document.write(com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, buttonLink));
-    document.write('<span class="commonNameWrapper"><i class="fas fa-minus"></i><i class="fas fa-plus"></i><span class="commonName">' + courseTitle + '</span></span></button>');  // close buttonLink tag here
+    document.write('<span class="courseTitleWrapper"><i class="fas fa-minus"></i><i class="fas fa-plus"></i><span class="courseTitle">' + courseTitle + '</span></span></button>');  // close buttonLink tag here
 
 
 
