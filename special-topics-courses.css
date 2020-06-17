@@ -292,14 +292,19 @@ div.col-xs-12 courseSummaryWrapper {
     padding-left: 1.5rem;
 }
 
+div.col-xs-12.courseSummaryWrapper {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
 #zoneA.col-xs-12 .standardContent div.card div.card-body {
     padding-left: 1.5rem;
 }
 
-#zoneA.col-xs-12 div.levelFive {
+/* #zoneA.col-xs-12 div.levelFive {
     margin-bottom: 1rem;
     padding-bottom: 1rem;
-}
+} */
 
 
 
