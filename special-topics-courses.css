@@ -117,7 +117,7 @@ div.col-xs-12 courseSummaryWrapper {
 }
 
 #zoneA.col-md-9 .standardContent div.courseSummaryHeader {
-    padding-bottom: 0.5rem;
+    padding-bottom: 0;
     padding-left: 1.5rem;
 }
 
@@ -287,8 +287,8 @@ div.col-xs-12 courseSummaryWrapper {
 }
 
 #zoneA.col-xs-12 .standardContent div.courseSummaryHeader {
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
+    margin-bottom: 0;
+    padding-bottom: 0;
     padding-left: 1.5rem;
 }
 
@@ -383,8 +383,8 @@ div.col-xs-12.courseSummaryWrapper {
 }
 
 #zoneA.col-sm-8 .standardContent div.courseSummaryHeader {
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
+    margin-bottom: 0;
+    padding-bottom: 0;
     padding-left: 1.5rem;
 }
 
@@ -444,8 +444,8 @@ div.col-xs-12.courseSummaryWrapper {
     }
 
     #zoneA.col-xs-12 .standardContent div.courseSummaryHeader {
-        margin-bottom: 1rem;
-        padding-bottom: 1rem;
+        margin-bottom: 0;
+        padding-bottom: 0;
         padding-left: 1.5rem;
     }
 
@@ -453,10 +453,10 @@ div.col-xs-12.courseSummaryWrapper {
         padding-left: 1.5rem;
     }
 
-    #zoneA.col-xs-12 div.levelFive {
+    /* #zoneA.col-xs-12 div.levelFive {
         margin-bottom: 1rem;
         padding-bottom: 1rem;
-    }
+    } */
 }
 
 
