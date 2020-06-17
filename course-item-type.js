@@ -26,6 +26,7 @@
 try {
     /* -- Initialize function scope variables -- */
     var contentName = content.get("Name");
+    var courseTitle = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Title' output='normal' display_field='value' />");
     var commonName = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Course Name' output='normal' display_field='value' />");
     var coursePrefix = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Prefix' output='normal' display_field='value' />");
     var courseSection = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Section' output='normal' display_field='value' />");
@@ -46,7 +47,7 @@ try {
 
 
     /* -- Derive the Course Title -- */
-    var courseTitle = coursePrefix + ' ' + courseNumber + '-' + courseSection + ' ' + commonName;
+    courseTitle = coursePrefix + ' ' + courseNumber + '-' + courseSection + ' ' + commonName;
 
 
 
