@@ -26,7 +26,7 @@
 try {
     /* -- Initialize function scope variables -- */
     var contentName = content.get("Name");
-    var courseTitle = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Course Name' output='normal' display_field='value' />");
+    var commonName = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Course Name' output='normal' display_field='value' />");
     var coursePrefix = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Prefix' output='normal' display_field='value' />");
     var courseSection = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Section' output='normal' display_field='value' />");
     var courseNumber = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Number' output='normal' display_field='value' />");
@@ -63,7 +63,7 @@ try {
     document.write('<div class="card">'); // closed individually in *** write closing tags *** found near bottom of file currently line 142
     document.write(com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, cardHeader));
     document.write(com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, buttonLink));
-    document.write('<span class="courseTitleWrapper"><i class="fas fa-minus"></i><i class="fas fa-plus"></i><span class="courseTitle">' + courseTitle + '</span></span></button>');  // close buttonLink tag here
+    document.write('<span class="commonNameWrapper"><i class="fas fa-minus"></i><i class="fas fa-plus"></i><span class="commonName">' + commonName + '</span></span></button>');  // close buttonLink tag here
 
 
 
@@ -75,7 +75,7 @@ try {
     } else {
         document.write('<div class="col-xs-12 courseDetails commonTypes" style="display: none"><h4>Course Type: </h4><span class="courseType">No Course Type Entered</span></div>');
     }
-    document.write('<div class="col-xs-12 courseDetails commonName"><h4>Common Name: </h4><span class="commonName">' + courseTitle + '</span></div>');
+    document.write('<div class="col-xs-12 courseDetails commonName"><h4>Common Name: </h4><span class="commonName">' + commonName + '</span></div>');
     document.write('<div class="col-xs-12 col-sm-4 courseDetails coursePrefix"><h5>Prefix: </h5><span class="coursePrefix">' + coursePrefix + '</span></div>');
     document.write('<div class="col-xs-12 col-sm-4 courseDetails courseNumber"><h5>Number: </h5><span class="courseNumber">' + courseNumber + '</span></div>');
     document.write('<div class="col-xs-12 col-sm-4 courseDetails courseSection"><h5>Section: </h5><span class="courseSection">' + courseSection + '</span></div></div>'); // Closes courseSummaryHeader row div  
