@@ -220,30 +220,31 @@ function getMode(isPreview) {
 
 
 
-    /**
-     * Parse Custom Sort Field for multiple fields
-     * Called only when there are custom fields entered
-     * 
-     * @property is a value assigned from an array like object of custom Elements to sort by
-     * @augments array like object of customer elements parsed from the user input
-     */
-    function dynamicSort(property) {
-        return function (a,b) {
-            return a[property] > b[property] ? 1 : a[property] < b[property] ? -1 : 0;
-        }
+/**
+ * Parse Custom Sort Field for multiple fields
+ * Called only when there are custom fields entered
+ * 
+ * @property is a value assigned from an array like object of custom Elements to sort by
+ * @augments array like object of customer elements parsed from the user input
+ */
+function dynamicSort(property) {
+    return function (a, b) {
+        return a[property] > b[property] ? 1 : a[property] < b[property] ? -1 : 0;
     }
+}
 
-    function byCustomElements() {
-        var customElements = arguments;
-        return function (a, b) {
-            var i = 0, result = 0, numberOfElements = customElements.length;
-            while (result === 0 && i < numberOfElements) {
-                result = dynamicSort(customElements[i])(a,b);
-                i++;
-            }
-            return result;
+function byCustomElements(cid, elem) {
+    var customElements = arguments;
+    return function (a, b) {
+        var i = 0, result = 0, numberOfElements = customElements.length;
+        while (result === 0 && i < numberOfElements) {
+            let parsedElement = customElements[i].trim();
+            result = dynamicSort(parsedElement)(a,b);
+            i++;
         }
+        return result;
     }
+}
 
 
 
@@ -346,20 +347,7 @@ function main(header, midder, footer) {
             //document.write('not valid\n-->');
         }
     }
-    //log("Number of content items" + validContent.length);
-
-
-
-    // if (sElement != "") {
-    //     var arrayOfFields = sElement.split(',');
-    //     for (var i = 0; i <  arrayOfFields.length;  i++) {
-    //         // listOfFields += arrayOfFields[i] + " ";
-    //         validContent.sort((a,b)=> a.arrayOfFields[i].localeCompare(b.arrayOfFields[i]));
-    //     }
-    // }
-
-    
-
+    //log("Number of content items" + validContent.length);    
 
 
 
@@ -368,20 +356,17 @@ function main(header, midder, footer) {
      * Sort content
      */
     if (sElement != "") {
+        log(" if sElement: " + sElement);
         var arrayOfFields = sElement.split(',');
+        log(" 0 arrayOfFields: " + arrayOfFields[0]);
+        log(" 1 arrayOfFields: " + arrayOfFields[1]);
         validContent.sort(byCustomElements(arrayOfFields));
     } else {
         validContent.sort(eval(sortMethod + '(' + CID + ', sElement);'));
+        log("else sElement: " + sElement);
     }
     if (bReverse)
         validContent.reverse();
-
-
-    // BEGIN check status of expired content
-	/*for (var i = 0; i < validContent.length; i++) {
-		document.write(validContent[i].CachedContent.getStatus());
-	}*/
-    // END
 
 
 
