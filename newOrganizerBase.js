@@ -2,9 +2,15 @@
 *     @author Victor Chimenti, MSCS 2020
 *     @file newOrganizerBase.js
 *
-*     This new content type is being created to solve the sorting problem
-*     created by the need for a course item content type that allows courses
-*     to be sorted by multiple input fields.
+*     This new content type is being created to solve a sorting problem.
+*     The new Course Item content type requires sorting by multiple input fields
+*     such as Course Number, Course Section, Course Name. These fields need to be
+*     combined into one field and then sorted by the organizer.
+*
+*     Since the Organizer already allows a Custom Sort Field, we will add logic to
+*     allow multiple Fields to be entered in this Custom Sort.
+*
+*     Adapted from the existing organizer organizer.js media library id 163514
 *
 *     @version 1.0
 */
@@ -161,9 +167,9 @@ function byOrder(cid, elem) {
 /**
  * Checks a content item's status to see if it should be displayed.
  * The result depends on whether the CMS is in preview or publish, as each mode
- * displays content under differet conditions:
+ * displays content under different conditions:
  * - Preview: Content must be approved or pending
- * - Publush: Content must be approved
+ * - Publish: Content must be approved
  */
 var isValidStatus = (function () {
     if (isPreview)
