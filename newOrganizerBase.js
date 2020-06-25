@@ -220,6 +220,34 @@ function getMode(isPreview) {
 
 
 
+    /**
+     * Parse Custom Sort Field for multiple fields
+     * Called only when there are custom fields entered
+     * 
+     * @property is a value assigned from an array like object of custom Elements to sort by
+     * @augments array like object of customer elements parsed from the user input
+     */
+    function dynamicSort(property) {
+        return function (a,b) {
+            return a[property] > b[property] ? 1 : a[property] < b[property] ? -1 : 0;
+        }
+    }
+
+    function byCustomElements() {
+        var customElements = arguments;
+        return function (a, b) {
+            var i = 0, result = 0, numberOfElements = customElements.length;
+            while (result === 0 && i < numberOfElements) {
+                result = dynamicSort(customElements[i])(a,b);
+                i++;
+            }
+            return result;
+        }
+    }
+
+
+
+
 /* Main method */
 
 
@@ -322,25 +350,15 @@ function main(header, midder, footer) {
 
 
 
-    /**
-     * Parse Custom Sort Field for multiple fields
-     */
-      /* -- Derive the Course Title -- */
-    /* parse the list of destinations, add <li> tags*/
-    if (destination != "") {
-        var arrayOfDestinations = destination.split(',');
-        dest = arrayOfDestinations[0];
-        for (var i = 0; i < arrayOfDestinations.length; i++) {
-        listOfDestinations += '<li>' + arrayOfDestinations[i] + '</li>';
-        }
-    }
+    // if (sElement != "") {
+    //     var arrayOfFields = sElement.split(',');
+    //     for (var i = 0; i <  arrayOfFields.length;  i++) {
+    //         // listOfFields += arrayOfFields[i] + " ";
+    //         validContent.sort((a,b)=> a.arrayOfFields[i].localeCompare(b.arrayOfFields[i]));
+    //     }
+    // }
 
-    if (sElement != "") {
-        var arrayOfFields = sElement.split(',');
-        for (var i = 0; i <  arrayOfFields.length;  i++) {
-            listOfFields += arrayOfFields[i] + " ";
-        }
-    }
+    
 
 
 
@@ -349,7 +367,12 @@ function main(header, midder, footer) {
     /**
      * Sort content
      */
-    validContent.sort(eval(sortMethod + '(' + CID + ', sElement);'));
+    if (sElement != "") {
+        var arrayOfFields = sElement.split(',');
+        validContent.sort(byCustomElements(arrayOfFields));
+    } else {
+        validContent.sort(eval(sortMethod + '(' + CID + ', sElement);'));
+    }
     if (bReverse)
         validContent.reverse();
 
