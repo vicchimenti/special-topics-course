@@ -233,23 +233,23 @@ function dynamicSort(property) {
     }
 }
 
-function byCustomElements() {
-    var customElements = arguments;
-    var arrayOfFields = [];
-    log(" if sElement: " + sElement);
-    arrayOfFields = customElements.split(',');
-    log(" 0 arrayOfFields: " + arrayOfFields[0]);
-    log(" 1 arrayOfFields: " + arrayOfFields[1]);
+function byCustomElements(arr) {
+    var customElements = arr;
+    // var arrayOfFields = [];
+    // log(" if sElement: " + sElement);
+    // arrayOfFields = customElements.split(',');
+    log(" 0 arrayOfFields: " + customElements[0]);
+    log(" 1 arrayOfFields: " + customElements[1]);
     return function (a, b) {
-        var i = 0, result = 0, numberOfElements = arrayOfFields.length;
+        var i = 0, result = 0, numberOfElements = customElements.length;
         while (result === 0 && i < numberOfElements) {
             // let parsedElement = customElements[i];
             // let trimmedElement = parsedElement.trim();
-            log("customElements: " + arrayOfFields[i]);
+            log("customElements: " + customElements[i]);
             // log("trimmedElement: " + trimmedElement);
 
 
-            result = dynamicSort(arrayOfFields[i])(a,b);
+            result = dynamicSort(customElements[i])(a,b);
             i++;
         }
         return result;
