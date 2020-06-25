@@ -236,6 +236,7 @@ function main(header, midder, footer) {
     var SSID = String(content.get('Section')).match(/sslink_id="(\d+)"/)[1];
     var sortMethod = content.get('Sorting method').publish();
     var sElement = String(content.get('Custom element'));
+    var listOfFields = "";
     var bReverse = !content.get('Reverse order').isNull();
     var bPaginate = (content.hasElement('Paginate?') ? !content.get('Paginate?').isNull() : null);
     var nPerPage = (content.hasElement('Total number of items to display per page') ? content.get('Total number of items to display per page') : 0);
@@ -321,6 +322,29 @@ function main(header, midder, footer) {
 
 
 
+    /**
+     * Parse Custom Sort Field for multiple fields
+     */
+      /* -- Derive the Course Title -- */
+    /* parse the list of destinations, add <li> tags*/
+    if (destination != "") {
+        var arrayOfDestinations = destination.split(',');
+        dest = arrayOfDestinations[0];
+        for (var i = 0; i < arrayOfDestinations.length; i++) {
+        listOfDestinations += '<li>' + arrayOfDestinations[i] + '</li>';
+        }
+    }
+
+    if (sElement != "") {
+        var arrayOfFields = sElement.split(',');
+        for (var i = 0; i <  arrayOfFields.length;  i++) {
+            listOfFields += arrayOfFields[i] + " ";
+        }
+    }
+
+
+
+
 
     /**
      * Sort content
@@ -336,7 +360,12 @@ function main(header, midder, footer) {
 	}*/
     // END
 
-    // Display content
+
+
+
+    /**
+     * Display content
+     */
     if (!header)
         header = "";
     if (!midder)
