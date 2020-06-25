@@ -12,7 +12,7 @@
 *
 *     Adapted from the existing organizer organizer.js media library id 163514
 *
-*     @version 1.0
+*     @version 1.12
 */
 
 
@@ -233,13 +233,23 @@ function dynamicSort(property) {
     }
 }
 
-function byCustomElements(cid, elem) {
+function byCustomElements() {
     var customElements = arguments;
+    var arrayOfFields = [];
+    log(" if sElement: " + sElement);
+    arrayOfFields = customElements.split(',');
+    log(" 0 arrayOfFields: " + arrayOfFields[0]);
+    log(" 1 arrayOfFields: " + arrayOfFields[1]);
     return function (a, b) {
-        var i = 0, result = 0, numberOfElements = customElements.length;
+        var i = 0, result = 0, numberOfElements = arrayOfFields.length;
         while (result === 0 && i < numberOfElements) {
-            let parsedElement = customElements[i].trim();
-            result = dynamicSort(parsedElement)(a,b);
+            // let parsedElement = customElements[i];
+            // let trimmedElement = parsedElement.trim();
+            log("customElements: " + arrayOfFields[i]);
+            // log("trimmedElement: " + trimmedElement);
+
+
+            result = dynamicSort(arrayOfFields[i])(a,b);
             i++;
         }
         return result;
@@ -356,11 +366,16 @@ function main(header, midder, footer) {
      * Sort content
      */
     if (sElement != "") {
-        log(" if sElement: " + sElement);
-        var arrayOfFields = sElement.split(',');
-        log(" 0 arrayOfFields: " + arrayOfFields[0]);
-        log(" 1 arrayOfFields: " + arrayOfFields[1]);
-        validContent.sort(byCustomElements(arrayOfFields));
+        var arrayOfElements = [];
+
+        // var arrayOfFields = [];
+        // log(" if sElement: " + sElement);
+        arrayOfElements = sElement.split(',');
+        // log(" 0 arrayOfFields: " + arrayOfFields[0]);
+        // log(" 1 arrayOfFields: " + arrayOfFields[1]);
+        validContent.sort(byCustomElements(arrayOfElements));
+        log("sorted by custom elements");
+
     } else {
         validContent.sort(eval(sortMethod + '(' + CID + ', sElement);'));
         log("else sElement: " + sElement);
@@ -453,13 +468,3 @@ function main(header, midder, footer) {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
