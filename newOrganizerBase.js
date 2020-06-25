@@ -1,5 +1,5 @@
 /***
-*     @author Victor Chimenti, MSCS 2020
+*     @author Victor Chimenti, MSCS-SE 2020
 *     @file newOrganizerBase.js
 *
 *     This new content type is being created to solve a sorting problem.
@@ -32,6 +32,9 @@ function log(message) {
     document.write('<script>eval("console.log(\'' + message + '\')");</script>');
 }
 
+
+
+
 /* Sorting methods */
 
 /*
@@ -40,8 +43,10 @@ function log(message) {
  * Array.prototype.sort().
  *
  * @param cid The content type ID
- * @param elim The element to use for sorting
+ * @param elem The element to use for sorting
  */
+
+
 
 
 /**
@@ -80,6 +85,9 @@ function byDate(cid, elem) {
         return dateB.compareTo(dateA);
     }
 }
+
+
+
 
 /**
  * Sorts content alphabetically, from A to Z. Ignores special characters
@@ -120,6 +128,9 @@ function byName(cid, elem) {
     }
 }
 
+
+
+
 /**
  * Sorts content by a boolean value (i.e. whether or not an element has a value).
  * Particularly useful for single checkboxes (e.g. System Status content type).
@@ -148,6 +159,9 @@ function byBoolean(cid, elem) {
     }
 }
 
+
+
+
 /**
  * Sorts content by section order.
  * Content type ID and element name have no effect on the returned sorting method.
@@ -162,7 +176,11 @@ function byOrder(cid, elem) {
     }
 }
 
+
+
+
 /* Helper methods */
+
 
 /**
  * Checks a content item's status to see if it should be displayed.
@@ -177,6 +195,9 @@ var isValidStatus = (function () {
     else
         return function (status) { return status == 0; }
 })();
+
+
+
 
 /**
  * Determines whether a number has passed a certain limit.
@@ -196,7 +217,11 @@ function getMode(isPreview) {
         return CachedContent.APPROVED;
 }
 
+
+
+
 /* Main method */
+
 
 /**
  * Method called by Organizer content types to sort and display content.
@@ -225,13 +250,23 @@ function main(header, midder, footer) {
         LAYOUT = "v9/organizer/newsArticleSummary";
     }
 
-    // Get section
+
+
+
+    /**
+     * Get section
+     */
     var oSSLM = ServerSideLinkManager.getManager();
     var mySectionLinkID = Number(SSID);
     var myLink = oSSLM.getLink(dbStatement.getConnection(), mySectionLinkID, section.getID(), content.getID(), language);
     var sectionID = myLink.getToSectionID();
 
-    // Get content from section
+
+
+
+    /**
+     * Get content from section
+     */
     var oChannel = publishCache.getChannel();
     var oSection = TreeTraversalUtils.findSection(oChannel, section, sectionID, language);
     var dSequence = oSection.getContentsAndSequences();
@@ -254,7 +289,12 @@ function main(header, midder, footer) {
     //var mirrorContent = oSection.getContent(language, mode);
     //var mirrorContent = oSection.getContent(publishCache.getChannel(), language, mode);
 
-    // Filter content that matches content type
+    
+    
+
+    /**
+     * Filter content that matches content type
+     */
     var oCM = ApplicationContextProvider.getBean(com.terminalfour.content.IContentManager);
     var validContent = [];
     //log("Desired CID: " + CID);
@@ -279,7 +319,12 @@ function main(header, midder, footer) {
     }
     //log("Number of content items" + validContent.length);
 
-    // Sort content
+
+
+
+    /**
+     * Sort content
+     */
     validContent.sort(eval(sortMethod + '(' + CID + ', sElement);'));
     if (bReverse)
         validContent.reverse();
