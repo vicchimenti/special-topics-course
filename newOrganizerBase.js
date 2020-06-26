@@ -433,9 +433,13 @@ function main(header, midder, footer) {
         document.write(header);
         var oSW = new java.io.StringWriter();
         var oT4SW = new T4StreamWriter(oSW);
+        first = true;
+
         // var oCP = new ContentPublisher();
 
-        var contentInfo = [];
+        // var contentInfo = [];
+
+
         for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
             // var tci = new TargetContentInfo(validContent[i].CachedContent, oSection, language);
             // contentInfo.push(tci);
