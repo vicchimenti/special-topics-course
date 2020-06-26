@@ -12,7 +12,7 @@
 *
 *     Adapted from the existing organizer organizer.js media library id 163514
 *
-*     @version 1.12
+*     @version 1.13
 */
 
 
@@ -248,6 +248,9 @@ function byCustomElements(arr) {
             log("customElements: " + customElements[i]);
             // log("trimmedElement: " + trimmedElement);
             var currentElement = customElements[i].trim();
+            
+            log("currentElement: " + currentElement);
+
 
 
             result = dynamicSort(currentElement)(a,b);
