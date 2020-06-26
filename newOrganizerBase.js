@@ -391,8 +391,13 @@ function main(header, midder, footer) {
         midder = midder + '<div class="boxlinkItem viewAll"><a href="' + href + '">' + sViewAllText + '</a></div>';
     }
 
+
+
+    /**
+     * Determine Pagination
+     */
     if (bPaginate && !bSummFirst) {
-        log("if: bPaginate: " + bPaginate + "bSummFirst: " + bSummFirst);
+        log("if: bPaginate: " + bPaginate + " bSummFirst: " + bSummFirst);
         var contentInfo = [];
         for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
             var tci = new TargetContentInfo(validContent[i].CachedContent, oSection, language);
@@ -421,9 +426,10 @@ function main(header, midder, footer) {
         //log("before write");
         paginator.write(document, dbStatement, publishCache, section, language, isPreview, vector);
         //log("after write");
-    }
-    else {
-        log("else: bPaginate: " + bPaginate + "bSummFirst: " + bSummFirst);
+    } else if (bPaginate && bSummFirst) {
+
+    } else {
+        log("else: bPaginate: " + bPaginate + " bSummFirst: " + bSummFirst);
         document.write(header);
         var oSW = new java.io.StringWriter();
         var oT4SW = new T4StreamWriter(oSW);
@@ -435,20 +441,23 @@ function main(header, midder, footer) {
         //if (bSummFirst) { LIMIT = 100 } // get rid of limit if using summary first layout
         log("LIMIT: " + LIMIT);
         log("nPerPage: " + nPerPage);
+        log("nStart: " + nStart);
+
         for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
-            log("nStart: " + nStart);
             //log(LIMIT);
             //log(bSummFirst);
-            //log("Is Limit Passed: " + isLimitPassed(i, LIMIT));
+            log("Is Limit Passed: " + isLimitPassed(i, LIMIT));
+
             // if first print content item completely
             if (first) {
                 oLayout = LAYOUT;
                 first = false;
-            }
+
             // if not first print link version if requested but normally otherwise
-            else {
+            } else {
                 oLayout = bSummFirst ? LAYOUT + "/Link" : LAYOUT;
             }
+
             oCP.write(oT4SW, dbStatement, publishCache, oSection, validContent[i].Content, oLayout, isPreview);
         }
 
