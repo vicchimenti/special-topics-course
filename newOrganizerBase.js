@@ -12,7 +12,7 @@
 *
 *     Adapted from the existing organizer organizer.js media library id 163514
 *
-*     @version 2.0
+*     @version 2.1
 */
 
 
@@ -453,8 +453,10 @@ function main(header, midder, footer) {
         paginator.setPageSeparators(before, middle, after);
         paginator.setBeforeAndAfterHTML(header, footer);
         paginator.setPreview(isPreview);
-        //log("before write");
+        log("before write");
         paginator.write(document, dbStatement, publishCache, section, language, isPreview, vector);
+        log("after write");
+
     } else {
         log("else: bPaginate: " + bPaginate + " bSummFirst: " + bSummFirst);
         document.write(header);
