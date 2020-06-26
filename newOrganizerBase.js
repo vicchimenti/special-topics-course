@@ -12,7 +12,7 @@
 *
 *     Adapted from the existing organizer organizer.js media library id 163514
 *
-*     @version 2.6
+*     @version 2.7
 */
 
 
@@ -430,7 +430,7 @@ function main(header, midder, footer) {
     } else if (bPaginate && bSummFirst) {
         log("else if: bPaginate: " + bPaginate + " && bSummFirst: " + bSummFirst);
 
-        document.write(header);
+        // document.write(header);
         var oSW = new java.io.StringWriter();
         var oT4SW = new T4StreamWriter(oSW);
         var oCP = new ContentPublisher();
@@ -438,8 +438,6 @@ function main(header, midder, footer) {
 
         // first = true;
         var contentInfo = [];
-
-
         for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
             var tci = new TargetContentInfo(validContent[i].CachedContent, oSection, language);
             contentInfo.push(tci);
@@ -479,7 +477,7 @@ function main(header, midder, footer) {
         log("isPreview: " + isPreview);
 
         log("before write");
-        paginator.write(document, dbStatement, publishCache, oSection, language, isPreview, vector);
+        paginator.write(oT4SW, dbStatement, publishCache, oSection, language, isPreview, vector);
         // paginator.write(oT4SW, dbStatement, publishCache, oSection, validContent[i].CachedContent, oLayout, isPreview);
 
         log("after write");
