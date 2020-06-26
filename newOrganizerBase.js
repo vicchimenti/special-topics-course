@@ -427,63 +427,63 @@ function main(header, midder, footer) {
         //log("after write");
 
 
-    } else if (bPaginate && bSummFirst) {
-        log("else if: bPaginate: " + bPaginate + " && bSummFirst: " + bSummFirst);
+    // } else if (bPaginate && bSummFirst) {
+    //     log("else if: bPaginate: " + bPaginate + " && bSummFirst: " + bSummFirst);
 
-        // document.write(header);
-        var oSW = new java.io.StringWriter();
-        var oT4SW = new T4StreamWriter(oSW);
-        var oCP = new ContentPublisher();
+    //     // document.write(header);
+    //     var oSW = new java.io.StringWriter();
+    //     var oT4SW = new T4StreamWriter(oSW);
+    //     var oCP = new ContentPublisher();
 
 
-        // first = true;
-        var contentInfo = [];
-        for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
-            oLayout = bSummFirst ? LAYOUT + "/Link" : LAYOUT;
+    //     // first = true;
+    //     var contentInfo = [];
+    //     for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
+    //         oLayout = bSummFirst ? LAYOUT + "/Link" : LAYOUT;
 
-            // var tci = new TargetContentInfo(validContent[i].CachedContent, oSection, language);
-            // contentInfo.push(tci);
-            //document.write(" [" + validContent[i].Content.getVersion() + "] ");
+    //         // var tci = new TargetContentInfo(validContent[i].CachedContent, oSection, language);
+    //         // contentInfo.push(tci);
+    //         //document.write(" [" + validContent[i].Content.getVersion() + "] ");
 
-            // if first print content item completely
-            // if (first) {
-            //     oLayout = LAYOUT;
-            //     first = false;
+    //         // if first print content item completely
+    //         // if (first) {
+    //         //     oLayout = LAYOUT;
+    //         //     first = false;
 
-            // // if not first print link version if requested but normally otherwise
-            // } else {
-            //     oLayout = bSummFirst ? LAYOUT + "/Link" : LAYOUT;
-            // }
+    //         // // if not first print link version if requested but normally otherwise
+    //         // } else {
+    //         //     oLayout = bSummFirst ? LAYOUT + "/Link" : LAYOUT;
+    //         // }
         
-            log("LIMIT: " + LIMIT);
-            // var vector = new java.util.Vector(java.util.Arrays.asList(contentInfo));
-            // var vectorLength = vector.size();
-            // log("vector length: " + vectorLength);
-            // changes below 2-13-19 by Jason due to API change
-            //var paginator = ApplicationContextProvider.getBean(com.terminalfour.navigation.items.utils.NavigationPaginator);
-            var sectionPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean(com.terminalfour.publish.SectionPublisher),
-                contentPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean(com.terminalfour.publish.ContentPublisher),
-                publishHelper = com.terminalfour.spring.ApplicationContextProvider.getBean(com.terminalfour.publish.PublishHelper),
-                paginator = new NavigationPaginator(sectionPublisher, contentPublisher, publishHelper);
-            // end 2-13-19 changes
-            paginator.setContentPerPage((nPerPage > 0 ? nPerPage : 10));
-            log("nPerPage: " + nPerPage);
-            paginator.setFormatter(LAYOUT);
-            paginator.setLinksToShow(10);
-            var before = '<div class="paginationWrapper"><div class="pagination"><span class="paginationNumber">';
-            var middle = '</span><span class="paginationNumber">';
-            var after = '</span></div></div>';
-            paginator.setPageSeparators(before, middle, after);
-            paginator.setBeforeAndAfterHTML(header, footer);
-            paginator.setPreview(isPreview);
-            log("isPreview: " + isPreview);
+    //         log("LIMIT: " + LIMIT);
+    //         // var vector = new java.util.Vector(java.util.Arrays.asList(contentInfo));
+    //         // var vectorLength = vector.size();
+    //         // log("vector length: " + vectorLength);
+    //         // changes below 2-13-19 by Jason due to API change
+    //         //var paginator = ApplicationContextProvider.getBean(com.terminalfour.navigation.items.utils.NavigationPaginator);
+    //         var sectionPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean(com.terminalfour.publish.SectionPublisher),
+    //             contentPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean(com.terminalfour.publish.ContentPublisher),
+    //             publishHelper = com.terminalfour.spring.ApplicationContextProvider.getBean(com.terminalfour.publish.PublishHelper),
+    //             paginator = new NavigationPaginator(sectionPublisher, contentPublisher, publishHelper);
+    //         // end 2-13-19 changes
+    //         paginator.setContentPerPage((nPerPage > 0 ? nPerPage : 10));
+    //         log("nPerPage: " + nPerPage);
+    //         paginator.setFormatter(LAYOUT);
+    //         paginator.setLinksToShow(10);
+    //         var before = '<div class="paginationWrapper"><div class="pagination"><span class="paginationNumber">';
+    //         var middle = '</span><span class="paginationNumber">';
+    //         var after = '</span></div></div>';
+    //         paginator.setPageSeparators(before, middle, after);
+    //         paginator.setBeforeAndAfterHTML(header, footer);
+    //         paginator.setPreview(isPreview);
+    //         log("isPreview: " + isPreview);
 
-            log("before write");
-            // paginator.write(document, dbStatement, publishCache, section, language, isPreview, vector);
-            paginator.write(oT4SW, dbStatement, publishCache, oSection, validContent[i].CachedContent, oLayout, isPreview);
-            // oCP.write(oT4SW, dbStatement, publishCache, oSection, validContent[i].Content, oLayout, isPreview);
-        }
-        log("after write");
+    //         log("before write");
+    //         // paginator.write(document, dbStatement, publishCache, section, language, isPreview, vector);
+    //         paginator.write(oT4SW, dbStatement, publishCache, oSection, validContent[i].CachedContent, oLayout, isPreview);
+    //         // oCP.write(oT4SW, dbStatement, publishCache, oSection, validContent[i].Content, oLayout, isPreview);
+    //     }
+    //     log("after write");
 
 
     } else {
