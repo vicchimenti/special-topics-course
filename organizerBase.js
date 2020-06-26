@@ -293,7 +293,7 @@ function main(header, midder, footer) {
     }
 
     if (bPaginate && !bSummFirst) {
-        log("if: bPaginate: " + bPaginate + "bSummFirst: " + bSummFirst);
+        log("if: bPaginate: " + bPaginate + " bSummFirst: " + bSummFirst);
         var contentInfo = [];
         for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
             var tci = new TargetContentInfo(validContent[i].CachedContent, oSection, language);
