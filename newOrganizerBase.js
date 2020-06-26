@@ -12,7 +12,7 @@
 *
 *     Adapted from the existing organizer organizer.js media library id 163514
 *
-*     @version 2.2
+*     @version 2.3
 */
 
 
@@ -268,7 +268,6 @@ function main(header, midder, footer) {
     var SSID = String(content.get('Section')).match(/sslink_id="(\d+)"/)[1];
     var sortMethod = content.get('Sorting method').publish();
     var sElement = String(content.get('Custom element'));
-    // var listOfFields = "";
     var bReverse = !content.get('Reverse order').isNull();
     var bPaginate = (content.hasElement('Paginate?') ? !content.get('Paginate?').isNull() : null);
     var nPerPage = (content.hasElement('Total number of items to display per page') ? content.get('Total number of items to display per page') : 0);
@@ -429,16 +428,33 @@ function main(header, midder, footer) {
 
 
     } else if (bPaginate && bSummFirst) {
-        log("else if: bPaginate: " + bPaginate + " bSummFirst: " + bSummFirst);
+        log("else if: bPaginate: " + bPaginate + " && bSummFirst: " + bSummFirst);
+
+        document.write(header);
+        var oSW = new java.io.StringWriter();
+        var oT4SW = new T4StreamWriter(oSW);
+        // var oCP = new ContentPublisher();
+
         var contentInfo = [];
         for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
-            var tci = new TargetContentInfo(validContent[i].CachedContent, oSection, language);
-            contentInfo.push(tci);
+            // var tci = new TargetContentInfo(validContent[i].CachedContent, oSection, language);
+            // contentInfo.push(tci);
             //document.write(" [" + validContent[i].Content.getVersion() + "] ");
+
+            // if first print content item completely
+            if (first) {
+                oLayout = LAYOUT;
+                first = false;
+
+            // if not first print link version if requested but normally otherwise
+            } else {
+                oLayout = bSummFirst ? LAYOUT + "/Link" : LAYOUT;
+            }
         }
         log("LIMIT: " + LIMIT);
-        var vector = new java.util.Vector(java.util.Arrays.asList(contentInfo));
-        log("vector length: " + vector.length);
+        // var vector = new java.util.Vector(java.util.Arrays.asList(contentInfo));
+        // var vectorLength = vector.size();
+        // log("vector length: " + vectorLength);
         // changes below 2-13-19 by Jason due to API change
         //var paginator = ApplicationContextProvider.getBean(com.terminalfour.navigation.items.utils.NavigationPaginator);
         var sectionPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean(com.terminalfour.publish.SectionPublisher),
@@ -456,8 +472,12 @@ function main(header, midder, footer) {
         paginator.setPageSeparators(before, middle, after);
         paginator.setBeforeAndAfterHTML(header, footer);
         paginator.setPreview(isPreview);
+        log("isPreview: " + isPreview);
+
         log("before write");
-        paginator.write(document, dbStatement, publishCache, section, language, isPreview, vector);
+        // paginator.write(document, dbStatement, publishCache, section, language, isPreview, vector);
+        paginator.write(oT4SW, dbStatement, publishCache, oSection, validContent[i].Content, oLayout, isPreview);
+
         log("after write");
 
 
