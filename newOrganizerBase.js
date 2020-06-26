@@ -228,6 +228,8 @@ function getMode(isPreview) {
  * @augments array like object of customer elements parsed from the user input
  */
 function dynamicSort(property) {
+    log("property: " + property);
+
     return function (a, b) {
         return a[property] > b[property] ? 1 : a[property] < b[property] ? -1 : 0;
     }
@@ -235,24 +237,11 @@ function dynamicSort(property) {
 
 function byCustomElements(arr) {
     var customElements = arr;
-    // var arrayOfFields = [];
-    // log(" if sElement: " + sElement);
-    // arrayOfFields = customElements.split(',');
-    log(" 0 arrayOfFields: " + customElements[0]);
-    log(" 1 arrayOfFields: " + customElements[1]);
     return function (a, b) {
         var i = 0, result = 0, numberOfElements = customElements.length;
         while (result === 0 && i < numberOfElements) {
-            // let parsedElement = customElements[i];
-            // let trimmedElement = parsedElement.trim();
-            log("customElements: " + customElements[i]);
-            // log("trimmedElement: " + trimmedElement);
-            var currentElement = customElements[i].trim();
-            
+            var currentElement = customElements[i].trim();        
             log("currentElement: " + currentElement);
-
-
-
             result = dynamicSort(currentElement)(a,b);
             i++;
         }
