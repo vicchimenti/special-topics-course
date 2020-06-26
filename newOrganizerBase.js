@@ -12,7 +12,7 @@
 *
 *     Adapted from the existing organizer organizer.js media library id 163514
 *
-*     @version 1.14
+*     @version 2.0
 */
 
 
@@ -427,7 +427,34 @@ function main(header, midder, footer) {
         paginator.write(document, dbStatement, publishCache, section, language, isPreview, vector);
         //log("after write");
     } else if (bPaginate && bSummFirst) {
-
+        log("else if: bPaginate: " + bPaginate + " bSummFirst: " + bSummFirst);
+        var contentInfo = [];
+        for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
+            var tci = new TargetContentInfo(validContent[i].CachedContent, oSection, language);
+            contentInfo.push(tci);
+            //document.write(" [" + validContent[i].Content.getVersion() + "] ");
+        }
+        log("LIMIT: " + LIMIT);
+        var vector = new java.util.Vector(java.util.Arrays.asList(contentInfo));
+        // changes below 2-13-19 by Jason due to API change
+        //var paginator = ApplicationContextProvider.getBean(com.terminalfour.navigation.items.utils.NavigationPaginator);
+        var sectionPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean(com.terminalfour.publish.SectionPublisher),
+            contentPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean(com.terminalfour.publish.ContentPublisher),
+            publishHelper = com.terminalfour.spring.ApplicationContextProvider.getBean(com.terminalfour.publish.PublishHelper),
+            paginator = new NavigationPaginator(sectionPublisher, contentPublisher, publishHelper);
+        // end 2-13-19 changes
+        paginator.setContentPerPage((nPerPage > 0 ? nPerPage : 10));
+        log("nPerPage: " + nPerPage);
+        paginator.setFormatter(LAYOUT);
+        paginator.setLinksToShow(10);
+        var before = '<div class="paginationWrapper"><div class="pagination"><span class="paginationNumber">';
+        var middle = '</span><span class="paginationNumber">';
+        var after = '</span></div></div>';
+        paginator.setPageSeparators(before, middle, after);
+        paginator.setBeforeAndAfterHTML(header, footer);
+        paginator.setPreview(isPreview);
+        //log("before write");
+        paginator.write(document, dbStatement, publishCache, section, language, isPreview, vector);
     } else {
         log("else: bPaginate: " + bPaginate + " bSummFirst: " + bSummFirst);
         document.write(header);
