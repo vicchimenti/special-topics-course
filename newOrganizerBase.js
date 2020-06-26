@@ -268,7 +268,7 @@ function main(header, midder, footer) {
     var SSID = String(content.get('Section')).match(/sslink_id="(\d+)"/)[1];
     var sortMethod = content.get('Sorting method').publish();
     var sElement = String(content.get('Custom element'));
-    var listOfFields = "";
+    // var listOfFields = "";
     var bReverse = !content.get('Reverse order').isNull();
     var bPaginate = (content.hasElement('Paginate?') ? !content.get('Paginate?').isNull() : null);
     var nPerPage = (content.hasElement('Total number of items to display per page') ? content.get('Total number of items to display per page') : 0);
@@ -358,6 +358,8 @@ function main(header, midder, footer) {
     /**
      * Sort content
      */
+    log("sortMethod: " + sortMethod);
+
     if (sElement != "") {
         var arrayOfElements = [];
         arrayOfElements = sElement.split(',');
