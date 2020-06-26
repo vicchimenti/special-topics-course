@@ -12,7 +12,7 @@
 *
 *     Adapted from the existing organizer organizer.js media library id 163514
 *
-*     @version 2.7
+*     @version 2.8
 */
 
 
@@ -439,6 +439,8 @@ function main(header, midder, footer) {
         // first = true;
         var contentInfo = [];
         for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
+            oLayout = bSummFirst ? LAYOUT + "/Link" : LAYOUT;
+
             var tci = new TargetContentInfo(validContent[i].CachedContent, oSection, language);
             contentInfo.push(tci);
             //document.write(" [" + validContent[i].Content.getVersion() + "] ");
@@ -477,8 +479,9 @@ function main(header, midder, footer) {
         log("isPreview: " + isPreview);
 
         log("before write");
-        paginator.write(oT4SW, dbStatement, publishCache, oSection, language, isPreview, vector);
-        // paginator.write(oT4SW, dbStatement, publishCache, oSection, validContent[i].CachedContent, oLayout, isPreview);
+        // paginator.write(document, dbStatement, publishCache, section, language, isPreview, vector);
+        paginator.write(oT4SW, dbStatement, publishCache, oSection, validContent[i].Content, oLayout, isPreview);
+        // oCP.write(oT4SW, dbStatement, publishCache, oSection, validContent[i].Content, oLayout, isPreview);
 
         log("after write");
 
