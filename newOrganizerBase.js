@@ -12,7 +12,7 @@
 *
 *     Adapted from the existing organizer organizer.js media library id 163514
 *
-*     @version 2.1
+*     @version 2.2
 */
 
 
@@ -426,6 +426,8 @@ function main(header, midder, footer) {
         //log("before write");
         paginator.write(document, dbStatement, publishCache, section, language, isPreview, vector);
         //log("after write");
+
+
     } else if (bPaginate && bSummFirst) {
         log("else if: bPaginate: " + bPaginate + " bSummFirst: " + bSummFirst);
         var contentInfo = [];
@@ -436,6 +438,7 @@ function main(header, midder, footer) {
         }
         log("LIMIT: " + LIMIT);
         var vector = new java.util.Vector(java.util.Arrays.asList(contentInfo));
+        log("vector length: " + vector.length);
         // changes below 2-13-19 by Jason due to API change
         //var paginator = ApplicationContextProvider.getBean(com.terminalfour.navigation.items.utils.NavigationPaginator);
         var sectionPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean(com.terminalfour.publish.SectionPublisher),
@@ -456,6 +459,7 @@ function main(header, midder, footer) {
         log("before write");
         paginator.write(document, dbStatement, publishCache, section, language, isPreview, vector);
         log("after write");
+
 
     } else {
         log("else: bPaginate: " + bPaginate + " bSummFirst: " + bSummFirst);
