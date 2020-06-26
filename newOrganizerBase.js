@@ -12,7 +12,7 @@
 *
 *     Adapted from the existing organizer organizer.js media library id 163514
 *
-*     @version 1.13
+*     @version 1.14
 */
 
 
@@ -338,7 +338,7 @@ function main(header, midder, footer) {
             CachedContent: mirrorContent[i],
             index: dSequence.get(new java.lang.Integer(mirrorContent[i].ID))
         };
-        //log("Content #" + i + ": " + item.Content.get('Name') + " | CID: " + item.Content.getContentTypeID())
+        log("Content #" + i + ": " + item.Content.get('Name') + " | CID: " + item.Content.getContentTypeID())
         //document.write('<!--\n"' + item.Content.get('Name') + '"\nStatus: ' + item.CachedContent.getStatus(language, mode) + '\n');
         if (item.Content.getContentTypeID() == CID) {
             validContent.push(item);
@@ -360,15 +360,9 @@ function main(header, midder, footer) {
      */
     if (sElement != "") {
         var arrayOfElements = [];
-
-        // var arrayOfFields = [];
-        // log(" if sElement: " + sElement);
         arrayOfElements = sElement.split(',');
-        // log(" 0 arrayOfFields: " + arrayOfFields[0]);
-        // log(" 1 arrayOfFields: " + arrayOfFields[1]);
         validContent.sort(byCustomElements(arrayOfElements));
         log("sorted by custom elements");
-
     } else {
         validContent.sort(eval(sortMethod + '(' + CID + ', sElement);'));
         log("else sElement: " + sElement);
