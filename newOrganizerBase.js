@@ -247,9 +247,10 @@ function byCustomElements(arr) {
             // let trimmedElement = parsedElement.trim();
             log("customElements: " + customElements[i]);
             // log("trimmedElement: " + trimmedElement);
+            var currentElement = customElements[i].trim();
 
 
-            result = dynamicSort(customElements[i])(a,b);
+            result = dynamicSort(currentElement)(a,b);
             i++;
         }
         return result;
