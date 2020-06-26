@@ -480,7 +480,7 @@ function main(header, midder, footer) {
 
         log("before write");
         // paginator.write(document, dbStatement, publishCache, section, language, isPreview, vector);
-        paginator.write(oT4SW, dbStatement, publishCache, oSection, validContent[i].Content, oLayout, isPreview);
+        paginator.write(oT4SW, dbStatement, publishCache, oSection, validContent[i].CachedContent, oLayout, isPreview);
 
         log("after write");
 
