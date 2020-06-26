@@ -436,6 +436,7 @@ function main(header, midder, footer) {
         log("LIMIT: " + LIMIT);
         log("nPerPage: " + nPerPage);
         for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
+            log("nStart: " + nStart);
             //log(LIMIT);
             //log(bSummFirst);
             //log("Is Limit Passed: " + isLimitPassed(i, LIMIT));
