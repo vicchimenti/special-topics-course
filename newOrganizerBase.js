@@ -12,7 +12,7 @@
 *
 *     Adapted from the existing organizer organizer.js media library id 163514
 *
-*     @version 2.9
+*     @version 2.11
 */
 
 
@@ -227,15 +227,23 @@ function getMode(isPreview) {
  * @property is a value assigned from an array like object of custom Elements to sort by
  * @augments array like object of customer elements parsed from the user input
  */
-function dynamicSort(property, elem) {
+function dynamicSort(property) {
     log("property: " + property);
 
     return function (a, b) {
-        return a[property] > b[property] ? 1 : a[property] < b[property] ? -1 : 0;
+        log("a.Name: " + a.Content.get("Name"));
+        log("b.Name: " + b.Content.get("Name"));
+
+        var propertyA = a.Content.get(property).getValue();
+        var propertyB = b.Content.get(property).getValue();
+
+        // return a[property] > b[property] ? 1 : a[property] < b[property] ? -1 : 0;
+
+        return propertyA > propertyB ? 1 : propertyA < propertyB ? -1 : 0;
     }
 }
 
-function byCustomElements(arr, elem) {
+function byCustomElements(arr) {
     var customElements = arr;
     return function (a, b) {
         var i = 0, result = 0, numberOfElements = customElements.length;
