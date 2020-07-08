@@ -247,7 +247,10 @@ function dynamicSort(property) {
 
         // return a[property] > b[property] ? 1 : a[property] < b[property] ? -1 : 0;
 
-        return propertyA > propertyB ? 1 : propertyA < propertyB ? -1 : 0;
+        // return propertyA > propertyB ? 1 : propertyA < propertyB ? -1 : 0;
+
+        return strA > strB ? 1 : strA < strB ? -1 : 0;
+
     }
 }
 
