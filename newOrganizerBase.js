@@ -243,6 +243,7 @@ function byCustomElements(arr) {
             var currentElement = customElements[i].trim();        
             log("currentElement: " + currentElement);
             result = dynamicSort(currentElement)(a,b);
+            log("result: " + result);
             i++;
         }
         return result;
@@ -360,6 +361,7 @@ function main(header, midder, footer) {
     log("sortMethod: " + sortMethod);
 
     if (sElement != "") {
+        log("custom sort elements: " + sElement);
         var arrayOfElements = [];
         arrayOfElements = sElement.split(',');
         validContent.sort(byCustomElements(arrayOfElements));
