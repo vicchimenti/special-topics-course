@@ -237,6 +237,14 @@ function dynamicSort(property) {
         var propertyA = a.Content.get(property).getValue();
         var propertyB = b.Content.get(property).getValue();
 
+        var strA = new String(propertyA);
+        var strB = new String(propertyB);
+
+
+        log("propertyA: " + strA.toString());
+        log("propertyB: " + strB.toString());
+
+
         // return a[property] > b[property] ? 1 : a[property] < b[property] ? -1 : 0;
 
         return propertyA > propertyB ? 1 : propertyA < propertyB ? -1 : 0;
