@@ -12,7 +12,7 @@
 *
 *     Adapted from the existing organizer organizer.js media library id 163514
 *
-*     @version 2.8
+*     @version 2.9
 */
 
 
@@ -227,7 +227,7 @@ function getMode(isPreview) {
  * @property is a value assigned from an array like object of custom Elements to sort by
  * @augments array like object of customer elements parsed from the user input
  */
-function dynamicSort(property) {
+function dynamicSort(property, elem) {
     log("property: " + property);
 
     return function (a, b) {
@@ -235,7 +235,7 @@ function dynamicSort(property) {
     }
 }
 
-function byCustomElements(arr) {
+function byCustomElements(arr, elem) {
     var customElements = arr;
     return function (a, b) {
         var i = 0, result = 0, numberOfElements = customElements.length;
