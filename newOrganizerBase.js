@@ -224,43 +224,51 @@ function getMode(isPreview) {
  * Parse Custom Sort Field for multiple fields
  * Called only when there are custom fields entered
  * 
- * @property is a value assigned from an array like object of custom Elements to sort by
+ * @elem is a value assigned from an array like object of custom Elements to sort by
  * @augments array like object of customer elements parsed from the user input
  */
-function dynamicSort(property) {
-    log("property: " + property);
+function dynamicSort(cid, elem) {
+    log("elem: " + elem);
 
     return function (a, b) {
         log("a.Name: " + a.Content.get("Name"));
         log("b.Name: " + b.Content.get("Name"));
 
-        var strA = String(a.Content.get(property)).replace(/[^\w\s]/gi, '').toLowerCase();
-        var strB = String(b.Content.get(property)).replace(/[^\w\s]/gi, '').toLowerCase();
+        // var strA = String(a.Content.get(elem)).replace(/[^\w\s]/gi, '').toLowerCase();
+        // var strB = String(b.Content.get(elem)).replace(/[^\w\s]/gi, '').toLowerCase();
 
-        // var propertyA = a.Content.get(property).getValue();
-        // var propertyB = b.Content.get(property).getValue();
+        var strA = a.Content.get(elem).getValue();
+        var strB = b.Content.get(elem).getValue();
 
         log("strA: " + strA);
         log("strB: " + strB);
 
+        var boolA = !a.Content.get(elem).isNull();
+        var boolB = !b.Content.get(elem).isNull();
 
-        // return a[property] > b[property] ? 1 : a[property] < b[property] ? -1 : 0;
+        if (!boolA || !boolB) {
+            return byOrder(cid, elem)(a,b);
+        } else {
+            return strA > strB ? 1 : strA < strB ? -1 : 0;
+        }
 
-        // return propertyA > propertyB ? 1 : propertyA < propertyB ? -1 : 0;
 
-        return strA > strB ? 1 : strA < strB ? -1 : 0;
+        // return a[elem] > b[elem] ? 1 : a[elem] < b[elem] ? -1 : 0;
+
+        // return elemA > elemB ? 1 : elemA < elemB ? -1 : 0;
+
 
     }
 }
 
-function byCustomElements(arr) {
+function byCustomElements(cid, arr) {
     var customElements = arr;
     return function (a, b) {
         var i = 0, result = 0, numberOfElements = customElements.length;
         while (result === 0 && i < numberOfElements) {
             var currentElement = customElements[i].trim();        
             log("currentElement: " + currentElement);
-            result = dynamicSort(currentElement)(a,b);
+            result = dynamicSort(cid, currentElement)(a,b);
             log("result: " + result);
             i++;
         }
@@ -382,7 +390,7 @@ function main(header, midder, footer) {
         log("custom sort elements: " + sElement);
         var arrayOfElements = [];
         arrayOfElements = sElement.split(',');
-        validContent.sort(byCustomElements(arrayOfElements));
+        validContent.sort(byCustomElements(CID, arrayOfElements));
         log("sorted by custom elements");
     } else {
         validContent.sort(eval(sortMethod + '(' + CID + ', sElement);'));
