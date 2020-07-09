@@ -237,8 +237,15 @@ function dynamicSort(property) {
         var propertyA = a.Content.get(property).getValue();
         var propertyB = b.Content.get(property).getValue();
 
-        var strA = new String(propertyA);
-        var strB = new String(propertyB);
+        var objA = JSON.stringify(propertyA);
+        var objB = JSON.stringify(propertyB);
+
+        log("objA: " + objA);
+        log("objB: " + objB);
+
+
+        var strA = new String(objA);
+        var strB = new String(objB);
 
 
         log("propertyA: " + strA.toString());
