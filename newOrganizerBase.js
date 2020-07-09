@@ -243,11 +243,11 @@ function dynamicSort(cid, elem) {
         log("strA: " + strA);
         log("strB: " + strB);
 
-        var boolA = !a.Content.get(elem).isNull();
-        var boolB = !b.Content.get(elem).isNull();
+        var boolA = a.Content.get(elem).isNull();
+        var boolB = b.Content.get(elem).isNull();
 
-        if (!boolA || !boolB) {
-            return byOrder(cid, elem)(a,b);
+        if (boolA || boolB) {
+            return byOrder(cid, elem)(a, b);
         } else {
             return strA > strB ? 1 : strA < strB ? -1 : 0;
         }
