@@ -122,9 +122,9 @@ function byName(cid, elem) {
         }
     }
     return function (a, b) {
-        var nameA = String(a.Content.get(elem)).replace(/[^\w\s]/gi, '').toLowerCase();
-        var nameB = String(b.Content.get(elem)).replace(/[^\w\s]/gi, '').toLowerCase();
-        return nameA.localeCompare(nameB);
+        var strA = String(a.Content.get(elem)).replace(/[^\w\s]/gi, '').toLowerCase();
+        var strB = String(b.Content.get(elem)).replace(/[^\w\s]/gi, '').toLowerCase();
+        return strA.localeCompare(strB);
     }
 }
 
@@ -234,22 +234,14 @@ function dynamicSort(property) {
         log("a.Name: " + a.Content.get("Name"));
         log("b.Name: " + b.Content.get("Name"));
 
-        var propertyA = a.Content.get(property).getValue();
-        var propertyB = b.Content.get(property).getValue();
+        var strA = String(a.Content.get(property)).replace(/[^\w\s]/gi, '').toLowerCase();
+        var strB = String(b.Content.get(property)).replace(/[^\w\s]/gi, '').toLowerCase();
 
-        var objA = JSON.stringify(propertyA);
-        var objB = JSON.stringify(propertyB);
+        // var propertyA = a.Content.get(property).getValue();
+        // var propertyB = b.Content.get(property).getValue();
 
-        log("objA: " + objA);
-        log("objB: " + objB);
-
-
-        var strA = new String(objA);
-        var strB = new String(objB);
-
-
-        log("propertyA: " + strA.toString());
-        log("propertyB: " + strB.toString());
+        log("strA: " + strA);
+        log("strB: " + strB);
 
 
         // return a[property] > b[property] ? 1 : a[property] < b[property] ? -1 : 0;
