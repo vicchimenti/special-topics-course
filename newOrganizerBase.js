@@ -244,9 +244,9 @@ function byCustomElements(arr) {
         var i = 0, result = 0, numberOfElements = customElements.length;
         while (result === 0 && i < numberOfElements) {
             var currentElement = customElements[i].trim();        
-            log("currentElement: " + currentElement);
+            // log("currentElement: " + currentElement);
             result = dynamicSort(currentElement)(a,b);
-            log("result: " + result);
+            // log("result: " + result);
             i++;
         }
         return result;
