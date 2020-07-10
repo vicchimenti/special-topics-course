@@ -315,8 +315,8 @@ function main(header, midder, footer) {
         //log("ASCI Content Name: " + item.getName(language,mode));
         mirrorContent.push(item);
     }
-    var contentCurrent = oSection.getContent(CachedContent.CURRENT);
-    var contentApproved = oSection.getContent(CachedContent.APPROVED);
+    // var contentCurrent = oSection.getContent(CachedContent.CURRENT);
+    // var contentApproved = oSection.getContent(CachedContent.APPROVED);
     //log("Length of current content: " + contentCurrent.length);
     //log("Length of approved content: " + contentApproved.length);
     //log("Length of aSCI: " + aSCI.length);
@@ -361,17 +361,17 @@ function main(header, midder, footer) {
     /**
      * Sort content
      */
-    log("sortMethod: " + sortMethod);
+    // log("sortMethod: " + sortMethod);
 
     if (sElement != "") {
-        log("custom sort elements: " + sElement);
+        // log("custom sort elements: " + sElement);
         var arrayOfElements = [];
         arrayOfElements = sElement.split(',');
         validContent.sort(byCustomElements(arrayOfElements));
-        log("sorted by custom elements");
+        // log("sorted by custom elements");
     } else {
         validContent.sort(eval(sortMethod + '(' + CID + ', sElement);'));
-        log("else sElement: " + sElement);
+        // log("else sElement: " + sElement);
     }
     if (bReverse)
         validContent.reverse();
@@ -401,14 +401,14 @@ function main(header, midder, footer) {
      * Determine Pagination
      */
     if (bPaginate && !bSummFirst) {
-        log("if: bPaginate: " + bPaginate + " bSummFirst: " + bSummFirst);
+        // log("if: bPaginate: " + bPaginate + " bSummFirst: " + bSummFirst);
         var contentInfo = [];
         for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
             var tci = new TargetContentInfo(validContent[i].CachedContent, oSection, language);
             contentInfo.push(tci);
             //document.write(" [" + validContent[i].Content.getVersion() + "] ");
         }
-        log("LIMIT: " + LIMIT);
+        // log("LIMIT: " + LIMIT);
         var vector = new java.util.Vector(java.util.Arrays.asList(contentInfo));
         // changes below 2-13-19 by Jason due to API change
         //var paginator = ApplicationContextProvider.getBean(com.terminalfour.navigation.items.utils.NavigationPaginator);
@@ -418,7 +418,7 @@ function main(header, midder, footer) {
             paginator = new NavigationPaginator(sectionPublisher, contentPublisher, publishHelper);
         // end 2-13-19 changes
         paginator.setContentPerPage((nPerPage > 0 ? nPerPage : 10));
-        log("nPerPage: " + nPerPage);
+        // log("nPerPage: " + nPerPage);
         paginator.setFormatter(LAYOUT);
         paginator.setLinksToShow(10);
         var before = '<div class="paginationWrapper"><div class="pagination"><span class="paginationNumber">';
@@ -492,7 +492,7 @@ function main(header, midder, footer) {
 
 
     } else {
-        log("else: bPaginate: " + bPaginate + " bSummFirst: " + bSummFirst);
+        // log("else: bPaginate: " + bPaginate + " bSummFirst: " + bSummFirst);
         document.write(header);
         var oSW = new java.io.StringWriter();
         var oT4SW = new T4StreamWriter(oSW);
@@ -502,14 +502,14 @@ function main(header, midder, footer) {
         //log("Valid Content Length: " + validContent.length);
         // Limit set at 100 commented out by victor 5-1-2020
         //if (bSummFirst) { LIMIT = 100 } // get rid of limit if using summary first layout
-        log("LIMIT: " + LIMIT);
-        log("nPerPage: " + nPerPage);
-        log("nStart: " + nStart);
+        // log("LIMIT: " + LIMIT);
+        // log("nPerPage: " + nPerPage);
+        // log("nStart: " + nStart);
 
         for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
             //log(LIMIT);
             //log(bSummFirst);
-            log("Is Limit Passed: " + isLimitPassed(i, LIMIT));
+            // log("Is Limit Passed: " + isLimitPassed(i, LIMIT));
 
             // if first print content item completely
             if (first) {
