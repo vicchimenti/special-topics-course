@@ -35,7 +35,7 @@ importClass(com.terminalfour.navigation.items.utils.NavigationPaginator);
  * this function allow you to create a log message that will post to the console in the browser
  * for debugging purposes. please remove any logs once done debugging
  *
- * To trigger this function when you need a console.log() use the example below:
+ * To trigger this function when you need a console.log() use the example:
  * Example: log("variable a: " + varA);
  * 
  * @param message The string that will print to the browser console
@@ -244,7 +244,7 @@ function dynamicSort(elem) {
 
         // we have to use publish() rather than getValue()
         // to accommodate multiple input types such as radio buttons, checkboxes in addition to plain text and numbers
-        // publish returns a string
+        // publish() returns a string
         let strA = a.Content.get(elem).publish();
         let strB = b.Content.get(elem).publish();
 
@@ -289,8 +289,9 @@ function main(header, midder, footer) {
     /**
      * Set variables
      */
+    
 
-     // gets the title
+    // gets the title
     var title = (content.hasElement('Title') ? content.get('Title') : "");
     // users choice for the content type to sort
     var choice = content.get('Content type and layout').publish();
