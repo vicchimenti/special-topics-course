@@ -227,70 +227,25 @@ function getMode(isPreview) {
  * @elem is a value assigned from an array like object of custom Elements to sort by
  * @augments array like object of customer elements parsed from the user input
  */
-function dynamicSort(cid, elem) {
-    log("elem: " + elem);
+function dynamicSort(elem) {
 
     return function (a, b) {
-        log("a.Name: " + a.Content.get("Name"));
-        log("b.Name: " + b.Content.get("Name"));
-
-        // var strA = String(a.Content.get(elem)).replace(/[^\w\s]/gi, '').toLowerCase();
-        // var strB = String(b.Content.get(elem)).replace(/[^\w\s]/gi, '').toLowerCase();
 
         var strA = a.Content.get(elem).publish();
         var strB = b.Content.get(elem).publish();
 
-        log("strA: " + strA);
-        log("strB: " + strB);
-
-        // var boolA = a.Content.get(elem).isNull();
-        // var boolB = b.Content.get(elem).isNull();
-
-        // // document.forms.your - form - name.elements.radio - button - name.value
-
-
-
-        // if (boolA || boolB) {
-        //     let radioA = a.Content.get(elem).publish();
-        //     let radioB = b.Content.get(elem).publish();
-
-        //     // let radioA = a.document.forms.Add - a - New - Course - Item.elements.radio - button - name.value;
-        //     // let radioB = b.document.forms.Add - a - New - Course - Item.elements.radio - button - name.value;
-
-        //     log("radioA: " + radioA);
-        //     log("radioB: " + radioB);
-        //     // return byOrder(cid, elem)(a, b);
-
-        //     return radioA > radioB ? 1 : radioA < radioB ? -1 : 0;
-        // } else {
-        //     var strA = a.Content.get(elem).getValue();
-        //     var strB = b.Content.get(elem).getValue();
-
-        //     log("strA: " + strA);
-        //     log("strB: " + strB);
-        //     return strA > strB ? 1 : strA < strB ? -1 : 0;
-        // }
-
-
-        // return a[elem] > b[elem] ? 1 : a[elem] < b[elem] ? -1 : 0;
-
-        // return elemA > elemB ? 1 : elemA < elemB ? -1 : 0;
-
         return strA > strB ? 1 : strA < strB ? -1 : 0;
-
-
-
     }
 }
 
-function byCustomElements(cid, arr) {
+function byCustomElements(arr) {
     var customElements = arr;
     return function (a, b) {
         var i = 0, result = 0, numberOfElements = customElements.length;
         while (result === 0 && i < numberOfElements) {
             var currentElement = customElements[i].trim();        
             log("currentElement: " + currentElement);
-            result = dynamicSort(cid, currentElement)(a,b);
+            result = dynamicSort(currentElement)(a,b);
             log("result: " + result);
             i++;
         }
@@ -412,7 +367,7 @@ function main(header, midder, footer) {
         log("custom sort elements: " + sElement);
         var arrayOfElements = [];
         arrayOfElements = sElement.split(',');
-        validContent.sort(byCustomElements(CID, arrayOfElements));
+        validContent.sort(byCustomElements(arrayOfElements));
         log("sorted by custom elements");
     } else {
         validContent.sort(eval(sortMethod + '(' + CID + ', sElement);'));
