@@ -12,7 +12,7 @@
 *
 *     Adapted from the existing organizer organizer.js media library id 163514
 *
-*     @version 2.11
+*     @version 2.13
 */
 
 
@@ -28,9 +28,9 @@ importClass(com.terminalfour.publish.ContentPublisher);
 importClass(com.terminalfour.publish.utils.BrokerUtils);
 importClass(com.terminalfour.navigation.items.utils.NavigationPaginator); // added 2-13-19 by JB due to API change
 
-function log(message) {
-    document.write('<script>eval("console.log(\'' + message + '\')");</script>');
-}
+// function log(message) {
+//     document.write('<script>eval("console.log(\'' + message + '\')");</script>');
+// }
 
 
 
@@ -225,7 +225,7 @@ function getMode(isPreview) {
  * Called only when there are custom fields entered
  * 
  * @elem is a value assigned from an array like object of custom Elements to sort by
- * @augments array like object of customer elements parsed from the user input
+ * @arguments array like object of customer elements parsed from the user input
  */
 function dynamicSort(elem) {
 
@@ -341,7 +341,7 @@ function main(header, midder, footer) {
             CachedContent: mirrorContent[i],
             index: dSequence.get(new java.lang.Integer(mirrorContent[i].ID))
         };
-        log("Content #" + i + ": " + item.Content.get('Name') + " | CID: " + item.Content.getContentTypeID())
+        // log("Content #" + i + ": " + item.Content.get('Name') + " | CID: " + item.Content.getContentTypeID())
         //document.write('<!--\n"' + item.Content.get('Name') + '"\nStatus: ' + item.CachedContent.getStatus(language, mode) + '\n');
         if (item.Content.getContentTypeID() == CID) {
             validContent.push(item);
