@@ -12,7 +12,7 @@
 *
 *     Adapted from the existing organizer organizer.js media library id 163514
 *
-*     @version 2.13
+*     @version 2.14
 */
 
 
@@ -26,11 +26,7 @@ importClass(com.terminalfour.navigation.items.utils.TargetContentInfo);
 importClass(com.terminalfour.utils.T4StreamWriter);
 importClass(com.terminalfour.publish.ContentPublisher);
 importClass(com.terminalfour.publish.utils.BrokerUtils);
-importClass(com.terminalfour.navigation.items.utils.NavigationPaginator); // added 2-13-19 by JB due to API change
-
-// function log(message) {
-//     document.write('<script>eval("console.log(\'' + message + '\')");</script>');
-// }
+importClass(com.terminalfour.navigation.items.utils.NavigationPaginator);
 
 
 
@@ -104,7 +100,6 @@ function byName(cid, elem) {
                 elem = 'Name of Faculty or Staff Member';
                 break;
             case 243:
-                //elem = 'Article Title'; Isn't actually used for any of the displays
                 elem = 'Name';
                 break;
             case 82:
@@ -222,31 +217,41 @@ function getMode(isPreview) {
 
 /**
  * Parse Custom Sort Field for multiple fields
- * Called only when there are custom fields entered
+ * Called only when there is any custom field entered
  * 
- * @elem is a value assigned from an array like object of custom Elements to sort by
- * @arguments array like object of customer elements parsed from the user input
+ * @param elem is a value assigned from an array like object of custom Elements to sort by
+ * @param elements array like object of custom sort elements parsed from the user input in the Custom element
  */
 function dynamicSort(elem) {
-
     return function (a, b) {
 
-        var strA = a.Content.get(elem).publish();
-        var strB = b.Content.get(elem).publish();
+        // we have to use publish() rather than getValue()
+        // to accommodate multiple input types such as radio buttons, checkboxes in addition to plain text and numbers
+        // publish returns a string
+        let strA = a.Content.get(elem).publish();
+        let strB = b.Content.get(elem).publish();
 
         return strA > strB ? 1 : strA < strB ? -1 : 0;
     }
 }
 
-function byCustomElements(arr) {
-    var customElements = arr;
+// calls dynamic sort and sends one element at a time from the array of custom elements
+function byCustomElements(elements) {
+    // assign the array of custom elements to a local scope
+    let customElements = elements;
     return function (a, b) {
-        var i = 0, result = 0, numberOfElements = customElements.length;
+
+        // number of elements is the number of custom sort elements entered by the user
+        let i = 0, result = 0, numberOfElements = customElements.length;
+        
+        // if the result is zero then the value of a and b are equal
         while (result === 0 && i < numberOfElements) {
-            var currentElement = customElements[i].trim();        
-            // log("currentElement: " + currentElement);
+
+            // iterate through each element
+            let currentElement = customElements[i].trim();
+
+            // sort the content items by the current custom element       
             result = dynamicSort(currentElement)(a,b);
-            // log("result: " + result);
             i++;
         }
         return result;
@@ -307,23 +312,13 @@ function main(header, midder, footer) {
     var oSection = TreeTraversalUtils.findSection(oChannel, section, sectionID, language);
     var dSequence = oSection.getContentsAndSequences();
     var mode = getMode(isPreview);
-    var aSCI = oSection.getContent(oChannel, language, mode);  ///////UNCOMMENT oCHANNEL ON LIVE//////
-    var mirrorContent = []; // CachedContent[] of content in the section
+    var aSCI = oSection.getContent(oChannel, language, mode);
+    var mirrorContent = [];
     for (var i = 0; i < aSCI.length; i++) {
         var item = aSCI[i].getContent();
-        //log("ASCI I: " + i)
-        //log("ASCI Content Name: " + item.getName(language,mode));
         mirrorContent.push(item);
     }
-    // var contentCurrent = oSection.getContent(CachedContent.CURRENT);
-    // var contentApproved = oSection.getContent(CachedContent.APPROVED);
-    //log("Length of current content: " + contentCurrent.length);
-    //log("Length of approved content: " + contentApproved.length);
-    //log("Length of aSCI: " + aSCI.length);
-    //log("Length of Mirror Content: " + mirrorContent.length);
 
-    //var mirrorContent = oSection.getContent(language, mode);
-    //var mirrorContent = oSection.getContent(publishCache.getChannel(), language, mode);
 
     
     
@@ -333,27 +328,16 @@ function main(header, midder, footer) {
      */
     var oCM = ApplicationContextProvider.getBean(com.terminalfour.content.IContentManager);
     var validContent = [];
-    //log("Desired CID: " + CID);
     for (var i = 0; i < mirrorContent.length; i++) {
-        //log("Mirror I: " + i);
         var item = {
-            Content: oCM.get(mirrorContent[i].ID, language/*, mirrorContent[i].getVersion(language, mode)*/),
+            Content: oCM.get(mirrorContent[i].ID, language),
             CachedContent: mirrorContent[i],
             index: dSequence.get(new java.lang.Integer(mirrorContent[i].ID))
         };
-        // log("Content #" + i + ": " + item.Content.get('Name') + " | CID: " + item.Content.getContentTypeID())
-        //document.write('<!--\n"' + item.Content.get('Name') + '"\nStatus: ' + item.CachedContent.getStatus(language, mode) + '\n');
         if (item.Content.getContentTypeID() == CID) {
             validContent.push(item);
-            //log("     Content Valid")
-            //document.write('valid\n-->');
-        }
-        else {
-            //log("     Content Invalid")
-            //document.write('not valid\n-->');
         }
     }
-    //log("Number of content items" + validContent.length);    
 
 
 
@@ -361,17 +345,13 @@ function main(header, midder, footer) {
     /**
      * Sort content
      */
-    // log("sortMethod: " + sortMethod);
-
     if (sElement != "") {
-        // log("custom sort elements: " + sElement);
+        console.log("sElement: " + sElement);
         var arrayOfElements = [];
         arrayOfElements = sElement.split(',');
         validContent.sort(byCustomElements(arrayOfElements));
-        // log("sorted by custom elements");
     } else {
         validContent.sort(eval(sortMethod + '(' + CID + ', sElement);'));
-        // log("else sElement: " + sElement);
     }
     if (bReverse)
         validContent.reverse();
@@ -401,24 +381,19 @@ function main(header, midder, footer) {
      * Determine Pagination
      */
     if (bPaginate && !bSummFirst) {
-        // log("if: bPaginate: " + bPaginate + " bSummFirst: " + bSummFirst);
+        // when the user selects a content type with Summary in the Content type and layout option while also selecting Paginate
+
         var contentInfo = [];
         for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
             var tci = new TargetContentInfo(validContent[i].CachedContent, oSection, language);
             contentInfo.push(tci);
-            //document.write(" [" + validContent[i].Content.getVersion() + "] ");
         }
-        // log("LIMIT: " + LIMIT);
         var vector = new java.util.Vector(java.util.Arrays.asList(contentInfo));
-        // changes below 2-13-19 by Jason due to API change
-        //var paginator = ApplicationContextProvider.getBean(com.terminalfour.navigation.items.utils.NavigationPaginator);
         var sectionPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean(com.terminalfour.publish.SectionPublisher),
             contentPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean(com.terminalfour.publish.ContentPublisher),
             publishHelper = com.terminalfour.spring.ApplicationContextProvider.getBean(com.terminalfour.publish.PublishHelper),
             paginator = new NavigationPaginator(sectionPublisher, contentPublisher, publishHelper);
-        // end 2-13-19 changes
         paginator.setContentPerPage((nPerPage > 0 ? nPerPage : 10));
-        // log("nPerPage: " + nPerPage);
         paginator.setFormatter(LAYOUT);
         paginator.setLinksToShow(10);
         var before = '<div class="paginationWrapper"><div class="pagination"><span class="paginationNumber">';
@@ -427,100 +402,32 @@ function main(header, midder, footer) {
         paginator.setPageSeparators(before, middle, after);
         paginator.setBeforeAndAfterHTML(header, footer);
         paginator.setPreview(isPreview);
-        //log("before write");
         paginator.write(document, dbStatement, publishCache, section, language, isPreview, vector);
-        //log("after write");
 
-
-    // } else if (bPaginate && bSummFirst) {
-    //     log("else if: bPaginate: " + bPaginate + " && bSummFirst: " + bSummFirst);
-
-    //     // document.write(header);
-    //     var oSW = new java.io.StringWriter();
-    //     var oT4SW = new T4StreamWriter(oSW);
-    //     var oCP = new ContentPublisher();
-
-
-    //     // first = true;
-    //     var contentInfo = [];
-    //     for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
-    //         oLayout = bSummFirst ? LAYOUT + "/Link" : LAYOUT;
-
-    //         // var tci = new TargetContentInfo(validContent[i].CachedContent, oSection, language);
-    //         // contentInfo.push(tci);
-    //         //document.write(" [" + validContent[i].Content.getVersion() + "] ");
-
-    //         // if first print content item completely
-    //         // if (first) {
-    //         //     oLayout = LAYOUT;
-    //         //     first = false;
-
-    //         // // if not first print link version if requested but normally otherwise
-    //         // } else {
-    //         //     oLayout = bSummFirst ? LAYOUT + "/Link" : LAYOUT;
-    //         // }
-        
-    //         log("LIMIT: " + LIMIT);
-    //         // var vector = new java.util.Vector(java.util.Arrays.asList(contentInfo));
-    //         // var vectorLength = vector.size();
-    //         // log("vector length: " + vectorLength);
-    //         // changes below 2-13-19 by Jason due to API change
-    //         //var paginator = ApplicationContextProvider.getBean(com.terminalfour.navigation.items.utils.NavigationPaginator);
-    //         var sectionPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean(com.terminalfour.publish.SectionPublisher),
-    //             contentPublisher = com.terminalfour.spring.ApplicationContextProvider.getBean(com.terminalfour.publish.ContentPublisher),
-    //             publishHelper = com.terminalfour.spring.ApplicationContextProvider.getBean(com.terminalfour.publish.PublishHelper),
-    //             paginator = new NavigationPaginator(sectionPublisher, contentPublisher, publishHelper);
-    //         // end 2-13-19 changes
-    //         paginator.setContentPerPage((nPerPage > 0 ? nPerPage : 10));
-    //         log("nPerPage: " + nPerPage);
-    //         paginator.setFormatter(LAYOUT);
-    //         paginator.setLinksToShow(10);
-    //         var before = '<div class="paginationWrapper"><div class="pagination"><span class="paginationNumber">';
-    //         var middle = '</span><span class="paginationNumber">';
-    //         var after = '</span></div></div>';
-    //         paginator.setPageSeparators(before, middle, after);
-    //         paginator.setBeforeAndAfterHTML(header, footer);
-    //         paginator.setPreview(isPreview);
-    //         log("isPreview: " + isPreview);
-
-    //         log("before write");
-    //         // paginator.write(document, dbStatement, publishCache, section, language, isPreview, vector);
-    //         paginator.write(oT4SW, dbStatement, publishCache, oSection, validContent[i].CachedContent, oLayout, isPreview);
-    //         // oCP.write(oT4SW, dbStatement, publishCache, oSection, validContent[i].Content, oLayout, isPreview);
-    //     }
-    //     log("after write");
-
-
+        // eventually we may want an else if here EX: else if (bPaginate && bSummFirst) {...}
+        // that would allow when the Summary and Paginate option are both chosen
+        // however at this time I haven't been able to produce a solution that merges
+        // the paginator with the oCP but it should be possible with enough time to work it out
+        // for now we go straight to the else
+        // and we must communicate to our departments that we don't support that functionality
+        // when they try to select both summary and paginator
+        // Victor 7/2020
     } else {
-        // log("else: bPaginate: " + bPaginate + " bSummFirst: " + bSummFirst);
         document.write(header);
         var oSW = new java.io.StringWriter();
         var oT4SW = new T4StreamWriter(oSW);
         var oCP = new ContentPublisher();
         // prepare for first content item
         first = true;
-        //log("Valid Content Length: " + validContent.length);
-        // Limit set at 100 commented out by victor 5-1-2020
-        //if (bSummFirst) { LIMIT = 100 } // get rid of limit if using summary first layout
-        // log("LIMIT: " + LIMIT);
-        // log("nPerPage: " + nPerPage);
-        // log("nStart: " + nStart);
-
         for (var i = nStart - 1; i < validContent.length && !isLimitPassed(i, LIMIT); i++) {
-            //log(LIMIT);
-            //log(bSummFirst);
-            // log("Is Limit Passed: " + isLimitPassed(i, LIMIT));
-
             // if first print content item completely
             if (first) {
                 oLayout = LAYOUT;
                 first = false;
-
             // if not first print link version if requested but normally otherwise
             } else {
                 oLayout = bSummFirst ? LAYOUT + "/Link" : LAYOUT;
             }
-
             oCP.write(oT4SW, dbStatement, publishCache, oSection, validContent[i].Content, oLayout, isPreview);
         }
 
