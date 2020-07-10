@@ -237,39 +237,47 @@ function dynamicSort(cid, elem) {
         // var strA = String(a.Content.get(elem)).replace(/[^\w\s]/gi, '').toLowerCase();
         // var strB = String(b.Content.get(elem)).replace(/[^\w\s]/gi, '').toLowerCase();
 
-        var strA = a.Content.get(elem).getValue();
-        var strB = b.Content.get(elem).getValue();
+        var strA = a.Content.get(elem).publish();
+        var strB = b.Content.get(elem).publish();
 
         log("strA: " + strA);
         log("strB: " + strB);
 
-        var boolA = a.Content.get(elem).isNull();
-        var boolB = b.Content.get(elem).isNull();
+        // var boolA = a.Content.get(elem).isNull();
+        // var boolB = b.Content.get(elem).isNull();
 
-        // document.forms.your - form - name.elements.radio - button - name.value
+        // // document.forms.your - form - name.elements.radio - button - name.value
 
 
 
-        if (boolA || boolB) {
-            let radioA = a.Content.get(elem).publish();
-            let radioB = b.Content.get(elem).publish();
+        // if (boolA || boolB) {
+        //     let radioA = a.Content.get(elem).publish();
+        //     let radioB = b.Content.get(elem).publish();
 
-            // let radioA = a.document.forms.Add - a - New - Course - Item.elements.radio - button - name.value;
-            // let radioB = b.document.forms.Add - a - New - Course - Item.elements.radio - button - name.value;
+        //     // let radioA = a.document.forms.Add - a - New - Course - Item.elements.radio - button - name.value;
+        //     // let radioB = b.document.forms.Add - a - New - Course - Item.elements.radio - button - name.value;
 
-            log("radioA: " + radioA);
-            log("radioB: " + radioB);
-            // return byOrder(cid, elem)(a, b);
+        //     log("radioA: " + radioA);
+        //     log("radioB: " + radioB);
+        //     // return byOrder(cid, elem)(a, b);
 
-            return radioA > radioB ? 1 : radioA < radioB ? -1 : 0;
-        } else {
-            return strA > strB ? 1 : strA < strB ? -1 : 0;
-        }
+        //     return radioA > radioB ? 1 : radioA < radioB ? -1 : 0;
+        // } else {
+        //     var strA = a.Content.get(elem).getValue();
+        //     var strB = b.Content.get(elem).getValue();
+
+        //     log("strA: " + strA);
+        //     log("strB: " + strB);
+        //     return strA > strB ? 1 : strA < strB ? -1 : 0;
+        // }
 
 
         // return a[elem] > b[elem] ? 1 : a[elem] < b[elem] ? -1 : 0;
 
         // return elemA > elemB ? 1 : elemA < elemB ? -1 : 0;
+
+        return strA > strB ? 1 : strA < strB ? -1 : 0;
+
 
 
     }
