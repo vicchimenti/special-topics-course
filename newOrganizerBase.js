@@ -251,8 +251,12 @@ function dynamicSort(cid, elem) {
 
 
         if (boolA || boolB) {
-            let radioA = a.document.forms.Add - a - New - Course - Item.elements.radio - button - name.value;
-            let radioB = b.document.forms.Add - a - New - Course - Item.elements.radio - button - name.value;
+            let radioA = a.Content.get(elem).publish();
+            let radioB = b.Content.get(elem).publish();
+
+            // let radioA = a.document.forms.Add - a - New - Course - Item.elements.radio - button - name.value;
+            // let radioB = b.document.forms.Add - a - New - Course - Item.elements.radio - button - name.value;
+
             log("radioA: " + radioA);
             log("radioB: " + radioB);
             // return byOrder(cid, elem)(a, b);
