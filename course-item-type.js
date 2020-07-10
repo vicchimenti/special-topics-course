@@ -26,7 +26,6 @@
 try {
     /* -- Initialize function scope variables -- */
     var contentName = content.get("Name");
-    // var courseTitle = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Course Title' output='normal' display_field='value' />");
     var commonName = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Course Name' output='normal' display_field='value' />");
     var coursePrefix = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Prefix' output='normal' display_field='value' />");
     var courseSection = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Section' output='normal' display_field='value' />");
@@ -35,13 +34,6 @@ try {
     var year = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Year' output='normal' display_field='value' />");
     var faculty = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Faculty' output='normal' display_field='value' />");
     var courseDescription = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Description' output='normal' display_field='value' />");
-    // var courseType = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Type' output='normal' display_field='value' />");
-    // var syllabus = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Syllabus' output='normal' display_field='value' />");
-    // var textbooks = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Textbooks' output='normal' display_field='value' />");
-    // var assignments = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Assignments' output='normal' display_field='value' />");
-    // var prerequisites = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Prerequisites' output='normal' display_field='value' />");
-    // var groupDescription = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Course Type Description' output='normal' display_field='value' />");
-    // var comments = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Comments' output='normal' display_field='value' />");
     var keyWords = com.terminalfour.publish.utils.BrokerUtils.processT4Tags(dbStatement, publishCache, section, content, language, isPreview, "<t4 type='content' name='Keywords' output='normal' display_field='value' />");
 
 
@@ -110,83 +102,14 @@ try {
 
 
 
-    /* -- Write Program Level 1 Details --*/
-    // if (syllabus != "") {
-    //     document.write('<div class="row col-xs-12 levelOne">');
-    //     document.write('<div class="col-xs-12 courseDetails syllabus"><h5>Syllabus: </h5><div class="courseInfo">' + syllabus + '</div></div>');
-    //     document.write('</div>');
-    // } else {
-    //     document.write('<div class="row levelOne courseDetails syllabus" style="display: none"><h5>No Syllabus Provided</h5></div>');
-    // }
-
-
-
-    /* -- Write Program Level 2 Details --*/
-    // if (assignments != "") {
-    //     document.write('<div class="row col-xs-12 levelTwo">');
-    //     document.write('<div class="col-xs-12 courseDetails assignments"><h5>Assignments: </h5><div class="courseInfo">' + assignments + '</div></div>');
-    //     document.write('</div>');
-    // } else {
-    //     document.write('<div class="row levelTwo courseDetails assignments" style="display: none"><h5>No Assignments Provided</h5></div>');
-    // }
-
-
-
-    /* -- Write Program Level 3 Details --*/
-    // if (textbooks != "") {
-    //     document.write('<div class="row col-xs-12 levelThree">');
-    //     document.write('<div class="col-xs-12 courseDetails textbooks"><h5>Textbooks: </h5><div class="courseInfo">' + textbooks + '</div></div>');
-    //     document.write('</div>');
-    // } else {
-    //     document.write('<div class="row levelThree courseDetails textbooks" style="display: none"><h5>No Textbooks Provided</h5></div>');
-    // }
-
-
-
-    /* -- Write Program Level 4 Details --*/
-    // prerequisites
-    // if (prerequisites != "") {
-    //     document.write('<div class="row col-xs-12 levelFour">');
-    //     document.write('<div class="col-xs-12 courseDetails prerequisites"><h5>Prerequisites: </h5><div class="courseInfo">' + prerequisites + '</div></div>');
-    //     document.write('</div>');
-    // } else {
-    //     document.write('<div class="row levelFour courseDetails prerequisites" style="display: none"><h5>No Prerequisites Provided</h5></div>');
-    // }
-
-
-
-    /* -- Write Program Level 5 Details --*/
-    // Comments are a plain text entry field so they need to be wrapped in a paragraph and a span to match level four and up
-    // if (comments != "") {
-    //     document.write('<div class="row col-xs-12 levelFive">');
-    //     document.write('<div class="col-xs-12 courseDetails comments"><h5>Comments: </h5><div class="courseInfo"><p><span>' + comments + '</span></p></div></div>');
-    //     document.write('</div>');
-    // } else {
-    //     document.write('<div class="row levelFive courseDetails comments" style="display: none"><h5>No Comments Provided</h5></div>');
-    // }
-
-
-
-    /* -- Write Program Level 6 Details --*/
-    // group description is a plain text entry field so they need to be wrapped in a paragraph and a span to match level four and up
-    // if (groupDescription != "") {
-    //     document.write('<div class="row col-xs-12 levelSix">');
-    //     document.write('<div class="col-xs-12 courseDetails groupDescription"><h5>Common Group Description: </h5><div class="courseInfo"><p><span>' + groupDescription + '</span></p></div></div>');
-    //     document.write('</div>');
-    // } else {
-    //     document.write('<div class="row levelSix courseDetails groupDescription" style="display: none"><h5>No Common Group Description Provided</h5></div>');
-    // }
-
-
-
-    /* -- Write Program Level 7 Details --*/
+    /* -- Write Program Hidden Keywords --*/
     if (keyWords != "") {
         /* -- Keywords is a hidden field that is used to add searchable keywords when creating a program item but is not displayed on the live page -- */
-        document.write('<div class="row col-xs-12 levelSeven">');
+        document.write('<div class="row col-xs-12">');
         document.write('<div class="col-xs-12 courseDetails keyWords" style="display: none"><h5>Keywords: </h5><div class="courseInfo">' + keyWords + '</div></div>');
         document.write('</div>');
     } else {
-        document.write('<div class="row levelSeven courseDetails keyWords" style="display: none"><h5>No Keywords Provided</h5></div>');
+        document.write('<div class="row courseDetails keyWords" style="display: none"><h5>No Keywords Provided</h5></div>');
     }
 
 
