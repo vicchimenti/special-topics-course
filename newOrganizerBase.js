@@ -246,8 +246,18 @@ function dynamicSort(cid, elem) {
         var boolA = a.Content.get(elem).isNull();
         var boolB = b.Content.get(elem).isNull();
 
+        // document.forms.your - form - name.elements.radio - button - name.value
+
+
+
         if (boolA || boolB) {
-            return byOrder(cid, elem)(a, b);
+            let radioA = a.document.forms.Add - a - New - Course - Item.elements.radio - button - name.value;
+            let radioB = b.document.forms.Add - a - New - Course - Item.elements.radio - button - name.value;
+            log("radioA: " + radioA);
+            log("radioB: " + radioB);
+            // return byOrder(cid, elem)(a, b);
+
+            return radioA > radioB ? 1 : radioA < radioB ? -1 : 0;
         } else {
             return strA > strB ? 1 : strA < strB ? -1 : 0;
         }
