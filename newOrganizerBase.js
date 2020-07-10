@@ -12,7 +12,7 @@
 *
 *     Adapted from the existing organizer organizer.js media library id 163514
 *
-*     @version 2.14
+*     @version 2.15
 */
 
 
@@ -30,10 +30,27 @@ importClass(com.terminalfour.navigation.items.utils.NavigationPaginator);
 
 
 
+/**
+ * from the organizer we can't post console.log() directly to the browser.
+ * this function allow you to create a log message that will post to the console in the browser
+ * for debugging purposes. please remove any logs once done debugging
+ *
+ * To trigger this function when you need a console.log() use the example below:
+ * Example: log("variable a: " + varA);
+ * 
+ * @param message The string that will print to the browser console
+ * 
+ */
+function log(message) {
+    document.write('<script>eval("console.log(\'' + message + '\')");</script>');
+}
+
+
+
 
 /* Sorting methods */
 
-/*
+/**
  * All methods select what element to use for sorting if one is not provided,
  * depending on the content type ID. They then return a method to be used by
  * Array.prototype.sort().
@@ -364,11 +381,12 @@ function main(header, midder, footer) {
      * Sort content
      */
     if (sElement != "") {
-        console.log("sElement: " + sElement);
+        // when the user selects any custom sort element
         var arrayOfElements = [];
         arrayOfElements = sElement.split(',');
         validContent.sort(byCustomElements(arrayOfElements));
     } else {
+        // when the user only sorts by the default options
         validContent.sort(eval(sortMethod + '(' + CID + ', sElement);'));
     }
     if (bReverse)
