@@ -18,7 +18,7 @@
 *
 *     Document will write once when the page loads
 *
-*     @version 2.4
+*     @version 2.5
 */
 
 
@@ -40,6 +40,12 @@ try {
 
     /* -- Derive the Course Title -- */
     var courseTitle = coursePrefix + ' ' + courseNumber + '-' + courseSection + ' ' + commonName;
+
+
+
+    // match the varibale names of these fields to match the commonly used names in the existing course catelog
+    var sectionName = courseTitle;
+    var sectionTitle = commonName;
 
 
 
@@ -73,10 +79,17 @@ try {
     // } else {
     //     document.write('<div class="col-xs-12 courseDetails commonTypes" style="display: none"><h4>Course Type: </h4><span class="courseType">No Course Type Entered</span></div>');
     // }
-    document.write('<div class="col-xs-12 courseDetails commonName"><h4>Common Name: </h4><span class="commonName">' + commonName + '</span></div>');
-    document.write('<div class="col-xs-12 col-sm-4 courseDetails coursePrefix"><h5>Prefix: </h5><span class="coursePrefix">' + coursePrefix + '</span></div>');
-    document.write('<div class="col-xs-12 col-sm-4 courseDetails courseNumber"><h5>Number: </h5><span class="courseNumber">' + courseNumber + '</span></div>');
-    document.write('<div class="col-xs-12 col-sm-4 courseDetails courseSection"><h5>Section: </h5><span class="courseSection">' + courseSection + '</span></div></div>'); // Closes courseSummaryHeader row div  
+
+
+    // reorder the way that the name and title details appear
+    document.write('<div class="col-xs-12 courseDetails sectionName"><h4>Section Name: </h4><span class="sectionName">' + sectionName + '</span></div>');
+    document.write('<div class="col-xs-12 courseDetails sectionTitle"><h4>Section Title: </h4><span class="sectionTitle">' + sectionTitle + '</span></div>');
+
+
+    // document.write('<div class="col-xs-12 courseDetails commonName"><h4>Common Name: </h4><span class="commonName">' + commonName + '</span></div>');
+    // document.write('<div class="col-xs-12 col-sm-4 courseDetails coursePrefix"><h5>Prefix: </h5><span class="coursePrefix">' + coursePrefix + '</span></div>');
+    // document.write('<div class="col-xs-12 col-sm-4 courseDetails courseNumber"><h5>Number: </h5><span class="courseNumber">' + courseNumber + '</span></div>');
+    // document.write('<div class="col-xs-12 col-sm-4 courseDetails courseSection"><h5>Section: </h5><span class="courseSection">' + courseSection + '</span></div></div>'); // Closes courseSummaryHeader row div  
     document.write('<div class="row col-xs-12 courseSummaryHeader2">');
     document.write('<div class="col-xs-12 col-sm-4 courseDetails instructors"><h5>Faculty: </h5><span class="faculty">' + faculty + '</span></div>');
     document.write('<div class="col-xs-12 col-sm-4 courseDetails terms"><h5>Term: </h5><span class="term">' + term + '</span></div>');
