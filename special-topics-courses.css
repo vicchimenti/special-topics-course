@@ -36,6 +36,10 @@ span.courseTitle {
     font-weight: 700;
 }
 
+span.sectionTitle {
+    font-weight: 600;
+}
+
 div.col-xs-12 courseSummaryWrapper {
     padding-bottom: 1.25rem;
 }
