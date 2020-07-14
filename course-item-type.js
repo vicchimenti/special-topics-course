@@ -18,7 +18,7 @@
 *
 *     Document will write once when the page loads
 *
-*     @version 2.6
+*     @version 2.7
 */
 
 
@@ -83,7 +83,7 @@ try {
 
     // reorder the way that the name and title details appear
     document.write('<div class="col-xs-12 courseDetails sectionTitle"><h4>Section Title: </h4><span class="sectionTitle">' + sectionTitle + '</span></div>');
-    document.write('<div class="col-xs-12 courseDetails sectionName"><h4>Section Name: </h4><span class="sectionName">' + sectionName + '</span></div><div>'); // Closes courseSummaryHeader row div 
+    document.write('<div class="col-xs-12 courseDetails sectionName"><h4>Section Name: </h4><span class="sectionName">' + sectionName + '</span></div></div>'); // Closes courseSummaryHeader row div 
 
 
     // document.write('<div class="col-xs-12 courseDetails commonName"><h4>Common Name: </h4><span class="commonName">' + commonName + '</span></div>');
