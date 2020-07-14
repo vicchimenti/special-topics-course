@@ -18,7 +18,7 @@
 *
 *     Document will write once when the page loads
 *
-*     @version 2.5
+*     @version 2.6
 */
 
 
@@ -44,7 +44,7 @@ try {
 
 
     // match the varibale names of these fields to match the commonly used names in the existing course catelog
-    var sectionName = courseTitle;
+    var sectionName = coursePrefix + ' ' + courseNumber + '-' + courseSection;
     var sectionTitle = commonName;
 
 
@@ -82,8 +82,8 @@ try {
 
 
     // reorder the way that the name and title details appear
-    document.write('<div class="col-xs-12 courseDetails sectionName"><h4>Section Name: </h4><span class="sectionName">' + sectionName + '</span></div>');
     document.write('<div class="col-xs-12 courseDetails sectionTitle"><h4>Section Title: </h4><span class="sectionTitle">' + sectionTitle + '</span></div>');
+    document.write('<div class="col-xs-12 courseDetails sectionName"><h4>Section Name: </h4><span class="sectionName">' + sectionName + '</span></div><div>'); // Closes courseSummaryHeader row div 
 
 
     // document.write('<div class="col-xs-12 courseDetails commonName"><h4>Common Name: </h4><span class="commonName">' + commonName + '</span></div>');
