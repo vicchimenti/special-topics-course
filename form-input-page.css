@@ -1,6 +1,6 @@
 /** grid overrides for radio buttons and checkboxes **/
 
-.formPlaceholder form {
+div.formPlaceholder form {
     font-size: 1.6rem;
 }
 
@@ -18,12 +18,6 @@ div.js-t4form-container div.checkbox+.checkbox {
     margin-top: auto;
 }
 
-@media (min-width: 575.98px) {
-    .formPlaceholder form {
-        font-size: inherit;
-    }
-}
-
 
 
 /** Small and Mobile Screens **/
@@ -39,6 +33,12 @@ div.js-t4form-container div.checkbox+.checkbox {
         font-size: small;
     }
 }
+
+/* @media (min-width: 575.98px) {
+    .formPlaceholder form {
+        font-size: inherit;
+    }
+} */
 
 /* @media (orientation:landscape) {
     .formPlaceholder form {
