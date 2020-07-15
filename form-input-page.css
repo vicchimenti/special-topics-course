@@ -8,12 +8,16 @@
                                     width: 100%;
 } */
 
-div.js-t4form-container div.radio {
+
+.formPlaceholder .js-t4form-container .form-group.list-options .col-xs-12 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto;
 }
 
 
+/* div.js-t4form-container */
+/* div.radio */
 /* .js-t4form-container .radio {
     display: block;
     min-width: calc(30% - 10px);
