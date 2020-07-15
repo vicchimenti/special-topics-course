@@ -1,3 +1,5 @@
+/** grid overrides for radio buttons and checkboxes **/
+
 .formPlaceholder .js-t4form-container .form-group.list-options .col-xs-12 {
   display: inline-grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -10,4 +12,26 @@ div.js-t4form-container div.radio+.radio {
 
 div.js-t4form-container div.checkbox+.checkbox {
     margin-top: auto;
+}
+
+
+
+/** Small and Mobile Screens **/
+
+@media (max-width: 575.98px) {
+    form {
+        font-size: small;
+    }
+}
+
+@media (orientation:portrait) {
+    form {
+        font-size: small;
+    }
+}
+
+@media (orientation:landscape) {
+    form {
+        font-size: small;
+    }
 }
