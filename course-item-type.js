@@ -18,7 +18,7 @@
 *
 *     Document will write once when the page loads
 *
-*     @version 2.7
+*     @version 2.8
 */
 
 
@@ -82,7 +82,7 @@ try {
 
 
     // reorder the way that the name and title details appear
-    document.write('<div class="col-xs-12 courseDetails sectionTitle"><h4>Section Title: </h4><span class="sectionTitle">' + sectionTitle + '</span></div></div>'); // Closes courseSummaryHeader row div
+    document.write('<div class="col-xs-12 courseDetails sectionTitle"><h4>Title: </h4><span class="sectionTitle">' + sectionTitle + '</span></div></div>'); // Closes courseSummaryHeader row div
     // document.write('<div class="col-xs-12 courseDetails sectionName"><h4>Section Name: </h4><span class="sectionName">' + sectionName + '</span></div></div>'); // Closes courseSummaryHeader row div 
 
 
@@ -91,7 +91,7 @@ try {
     // document.write('<div class="col-xs-12 col-sm-4 courseDetails courseNumber"><h5>Number: </h5><span class="courseNumber">' + courseNumber + '</span></div>');
     // document.write('<div class="col-xs-12 col-sm-4 courseDetails courseSection"><h5>Section: </h5><span class="courseSection">' + courseSection + '</span></div></div>'); // Closes courseSummaryHeader row div  
     document.write('<div class="row col-xs-12 courseSummaryHeader2">');
-    document.write('<div class="col-xs-12 col-sm-3 courseDetails sectionName"><h4>Section Name: </h4><span class="sectionName">' + sectionName + '</span></div>');  
+    document.write('<div class="col-xs-12 col-sm-3 courseDetails sectionName"><h4>Name: </h4><span class="sectionName">' + sectionName + '</span></div>');  
     document.write('<div class="col-xs-12 col-sm-3 courseDetails instructors"><h5>Faculty: </h5><span class="faculty">' + faculty + '</span></div>');
     document.write('<div class="col-xs-12 col-sm-3 courseDetails terms"><h5>Term: </h5><span class="term">' + term + '</span></div>');
     document.write('<div class="col-xs-12 col-sm-3 courseDetails years"><h5>Year: </h5><span class="year">' + year + '</span></div></div>'); // Closes courseSummaryHeader2 row div
