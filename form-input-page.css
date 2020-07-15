@@ -1,9 +1,5 @@
 /** grid overrides for radio buttons and checkboxes **/
 
-div.formPlaceholder form {
-    font-size: 1.6rem;
-}
-
 .formPlaceholder .js-t4form-container .form-group.list-options .col-xs-12 {
   display: inline-grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -33,15 +29,3 @@ div.js-t4form-container div.checkbox+.checkbox {
         font-size: small;
     }
 }
-
-/* @media (min-width: 575.98px) {
-    .formPlaceholder form {
-        font-size: inherit;
-    }
-} */
-
-/* @media (orientation:landscape) {
-    .formPlaceholder form {
-        font-size: small;
-    }
-} */
