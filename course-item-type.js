@@ -87,7 +87,7 @@ try {
 
 
     // document.write('<div class="col-xs-12 courseDetails commonName"><h4>Common Name: </h4><span class="commonName">' + commonName + '</span></div>');
-    // document.write('<div class="col-xs-12 col-sm-4 courseDetails coursePrefix"><h5>Prefix: </h5><span class="coursePrefix">' + coursePrefix + '</span></div>');
+    // document.write('<div class="col-xs-12 col-sm-4 courseDetails coursePrefix style="display: none"><h5>Prefix: </h5><span class="coursePrefix">' + coursePrefix + '</span></div>');
     // document.write('<div class="col-xs-12 col-sm-4 courseDetails courseNumber"><h5>Number: </h5><span class="courseNumber">' + courseNumber + '</span></div>');
     // document.write('<div class="col-xs-12 col-sm-4 courseDetails courseSection"><h5>Section: </h5><span class="courseSection">' + courseSection + '</span></div></div>'); // Closes courseSummaryHeader row div  
     document.write('<div class="row col-xs-12 courseSummaryHeader2">');
@@ -125,6 +125,9 @@ try {
     } else {
         document.write('<div class="row courseDetails keyWords" style="display: none"><h5>No Keywords Provided</h5></div>');
     }
+
+    /* -- The Course Prefix is a searchable elment and hidden because it is displayed in the derived Section Name field  -- */
+    document.write('<div class="col-xs-12 col-sm-4 courseDetails coursePrefix style="display: none"><h5>Prefix: </h5><span class="coursePrefix">' + coursePrefix + '</span></div>');
 
 
 
