@@ -1,4 +1,4 @@
-section.formPlaceholderWrapper  div.formPlaceholder
+/* section.formPlaceholderWrapper  div.formPlaceholder
                                 div.js-t4form-container
                                 form.js-main-container
                                 div.js-elements-container
@@ -6,9 +6,9 @@ section.formPlaceholderWrapper  div.formPlaceholder
 
                                     display: block;
                                     width: 100%;
-}
+} */
 
-.js-t4form-container .radio {
+div.js-t4form-container div.radio {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
