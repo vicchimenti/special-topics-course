@@ -1,14 +1,39 @@
-.form-group {
-      display: block;
-      width: 100%;
+section.formPlaceholderWrapper  div.formPlaceholder
+                                div.js-t4form-container
+                                form.js-main-container
+                                div.js-elements-container
+                                div.form-group {
+                                    
+                                    display: block;
+                                    width: 100%;
 }
 
-.form-group #form-field-radio-34749 {
-    display: block;
-    min-width: calc(30% - 10px);
-    float: left;
+section.formPlaceholderWrapper  div.formPlaceholder 
+                                div.js-t4form-container 
+                                form.js-main-container 
+                                div.js-elements-container
+                                div.form-group
+                                fieldset.input-34749
+                                div.list-options
+                                div.col-xs-12
+                                div.fieldValue
+                                input.ace.js-choice {
+
+                                    display: block;
+                                    min-width: calc(30% - 10px);
+                                    float: left;
 }
 
-.form-group #form-field-radio-34749:nth-child(2n + 1){
-    clear: left;
+section.formPlaceholderWrapper  div.formPlaceholder 
+                                div.js-t4form-container 
+                                form.js-main-container 
+                                div.js-elements-container
+                                div.form-group
+                                fieldset.input-34749
+                                div.list-options
+                                div.col-xs-12
+                                div.fieldValue
+                                input.ace.js-choice:nth-child(2n + 1) {
+
+                                    clear: left;
 }
