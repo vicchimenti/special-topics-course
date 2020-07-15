@@ -8,38 +8,13 @@ section.formPlaceholderWrapper  div.formPlaceholder
                                     width: 100%;
 }
 
-/* .js-t4form-container .radio input[type="radio"] */
-
 .js-t4form-container .radio {
-
-/* section.formPlaceholderWrapper  div.formPlaceholder 
-                                div.js-t4form-container 
-                                form.js-main-container 
-                                div.js-elements-container
-                                div.form-group
-                                fieldset.input-34749
-                                div.list-options
-                                div.col-xs-12
-                                div.fieldValue
-                                input.ace.js-choice { */
-
-                                    display: block;
-                                    min-width: calc(30% - 10px);
-                                    float: left;
+    display: block;
+    min-width: calc(30% - 10px);
+    float: left;
 }
-
-/* section.formPlaceholderWrapper  div.formPlaceholder 
-                                div.js-t4form-container 
-                                form.js-main-container 
-                                div.js-elements-container
-                                div.form-group
-                                fieldset.input-34749
-                                div.list-options
-                                div.col-xs-12
-                                div.fieldValue */
 
 
 .js-t4form-container .radio:nth-child(2n + 1) {
-
-                                    clear: left;
+    clear: left;
 }
