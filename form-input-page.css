@@ -1,54 +1,13 @@
-/* section.formPlaceholderWrapper  div.formPlaceholder
-                                div.js-t4form-container
-                                form.js-main-container
-                                div.js-elements-container
-                                div.form-group {
-
-                                    display: block;
-                                    width: 100%;
-} */
-
-
-#input-34749 .formPlaceholder .js-t4form-container .form-group.list-options .col-xs-12 {
+.formPlaceholder .js-t4form-container .form-group.list-options .col-xs-12 {
   display: inline-grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto
 }
 
-#input-34749 div.js-t4form-container div.radio+.radio {
+div.js-t4form-container div.radio+.radio {
     margin-top: auto;
 }
 
-
-
-
-/* #input-34749 .formPlaceholder .js-t4form-container .form-group.list-options .col-xs-12 {
-  display: inline-grid;
-  grid-template-columns: auto auto auto auto;
-  grid-template-rows: auto
-}
-
-#input-34749 div.js-t4form-container div.radio+.radio {
+div.js-t4form-container div.checkbox+.checkbox {
     margin-top: auto;
-} */
-
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-
-
-
-  /* grid-template-rows: auto;
-  align-items: start; */
-/* div.js-t4form-container */
-/* div.radio */
-/* .js-t4form-container .radio {
-    display: block;
-    min-width: calc(30% - 10px);
-    float: left;
 }
-
-
-.js-t4form-container .radio:nth-child(2n + 1) {
-    clear: left;
-} */
