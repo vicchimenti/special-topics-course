@@ -127,7 +127,7 @@ try {
     }
 
     /* -- The Course Prefix is a searchable elment and hidden because it is displayed in the derived Section Name field  -- */
-    document.write('<div class="row col-xs-12 courseDetails coursePrefix style="display: none"><h5>Prefix: </h5><span class="coursePrefix">' + coursePrefix + '</span></div>');
+    document.write('<div class="row col-xs-12 courseDetails coursePrefix" style="display: none"><h5>Prefix: </h5><span class="coursePrefix">' + coursePrefix + '</span></div>');
 
 
 
